@@ -1,8 +1,8 @@
 site_name: Optimization Tutorial
-site_url: https://optimization-tutorial.com/
+# site_url: https://optimization-tutorial.com/
 
 repo_url: https://github.com/SimonBlanke/optimization-tutorial
-edit_uri: ""
+# edit_uri: ""
 
 markdown_extensions:
   - attr_list
