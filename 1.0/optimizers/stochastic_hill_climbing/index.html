@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#macro-rendering-error">
+<a class="md-skip" href="#stochastic-hill-climbing">
           Skip to content
         </a>
 </div>
@@ -136,9 +136,55 @@
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Stochastic Hill Climbing
+          <span class="md-nav__icon md-icon"></span>
+</label>
 <a class="md-nav__link md-nav__link--active" href="./">
         Stochastic Hill Climbing
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+    Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#epsilon">
+    epsilon
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution">
+    distribution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_neighbours">
+    n_neighbours
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../simulated_annealing/">
@@ -222,27 +268,80 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+    Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#epsilon">
+    epsilon
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution">
+    distribution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_neighbours">
+    n_neighbours
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="macro-rendering-error"><em>Macro Rendering Error</em></h1>
-<p><strong>TemplateNotFound</strong>: optimizers.epsilon.md</p>
-<pre><code>Traceback (most recent call last):
-  File "/home/simon/anaconda3/envs/dev/lib/python3.8/site-packages/mkdocs_macros/plugin.py", line 480, in render
-    return md_template.render(**page_variables)
-  File "/home/simon/anaconda3/envs/dev/lib/python3.8/site-packages/jinja2/environment.py", line 1291, in render
-    self.environment.handle_exception()
-  File "/home/simon/anaconda3/envs/dev/lib/python3.8/site-packages/jinja2/environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "&lt;template&gt;", line 15, in top-level template code
-  File "/home/simon/anaconda3/envs/dev/lib/python3.8/site-packages/jinja2/loaders.py", line 214, in get_source
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: optimizers.epsilon.md
-
-</code></pre>
+<h1 id="stochastic-hill-climbing">Stochastic Hill Climbing</h1>
+<h2 id="introduction">Introduction</h2>
+<h2 id="about-the-implementation">About the implementation</h2>
+<h2 id="parameters">Parameters</h2>
+<h3 id="epsilon"><code>epsilon</code></h3>
+<p>The "step-size" of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the step size. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space.</p>
+<ul>
+<li>type: float</li>
+<li>default: 0.03</li>
+<li>typical range: 0.01 ... 0.3</li>
+</ul>
+<hr/>
+<h3 id="distribution"><code>distribution</code></h3>
+<p>...</p>
+<ul>
+<li>type: string</li>
+<li>default: normal</li>
+<li>possible values: normal, laplace, logistic, gumbel</li>
+</ul>
+<hr/>
+<h3 id="n_neighbours"><code>n_neighbours</code></h3>
+<p>...</p>
+<ul>
+<li>type: int</li>
+<li>default: 3</li>
+<li>typical range: 1 ... 10</li>
+</ul>
+<hr/>
 </article>
 </div>
 </div>
