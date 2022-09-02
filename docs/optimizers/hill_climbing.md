@@ -1,9 +1,5 @@
 # Hill Climbing
 
-> Gradient-Free-Optimizers v1.0 - latest <br>
-> Hyperactive v3.0 - latest
-
-
 
 ## Introduction
 
