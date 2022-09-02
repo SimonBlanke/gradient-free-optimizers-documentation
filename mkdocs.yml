@@ -10,7 +10,8 @@ markdown_extensions:
 
 plugins:
   - glightbox
-
+  - macros
+      
 theme:
   name: material
   icon:
@@ -43,7 +44,8 @@ extra:
 nav:
   - Home: index.md
   - Introduction: introduction.md
-  - Overview: overview.md
+
+  - Base Optimizer: base_optimizer.md
 
   - Optimization Algorithms:
       - Hill Climbing: optimizers/hill_climbing.md
