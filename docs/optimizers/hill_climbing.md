@@ -20,23 +20,13 @@ The hill climbing algorithm is saving the current position in the search space a
 
 ---
 
-### `distribution`
+{% include 'parameters/distribution.md' %}
 
-...
-
-  - type: string
-  - default: normal
-  - possible values: normal, laplace, logistic, gumbel
 
 ---
 
-### `n_neighbours`
+{% include 'parameters/n_neighbours.md' %}
 
-...
-
-  - type: int
-  - default: 3
-  - typical range: 1 ... 10
 
 ---
 
