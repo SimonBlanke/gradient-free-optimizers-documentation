@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
-<title>Hill Climbing - Gradient Free Optimizers</title>
+<title>Max sample size - Gradient Free Optimizers</title>
 <link href="../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#hill-climbing">
+<a class="md-skip" href="#max_sample_size">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Hill Climbing
+              Max sample size
             
           </span>
 </div>
@@ -117,8 +117,8 @@
         Base Optimizer
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
 <label class="md-nav__link" for="__nav_4">
           Optimization Algorithms
           <span class="md-nav__icon md-icon"></span>
@@ -129,95 +129,43 @@
           Optimization Algorithms
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Hill Climbing
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../optimizers/hill_climbing/">
         Hill Climbing
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#introduction">
-    Introduction
-  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#about-the-implementation">
-    About the implementation
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#parameters">
-    Parameters
-  </a>
-<nav aria-label="Parameters" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#epsilon">
-    epsilon
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#distribution">
-    distribution
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#n_neighbours">
-    n_neighbours
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#characteristics">
-    Characteristics
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../stochastic_hill_climbing/">
+<a class="md-nav__link" href="../../optimizers/stochastic_hill_climbing/">
         Stochastic Hill Climbing
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../simulated_annealing/">
+<a class="md-nav__link" href="../../optimizers/simulated_annealing/">
         Simulated Annealing
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../downhill_simplex/">
+<a class="md-nav__link" href="../../optimizers/downhill_simplex/">
         Downhill Simplex Optimization
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../pattern_search/">
+<a class="md-nav__link" href="../../optimizers/pattern_search/">
         Pattern Search
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../powells_method/">
+<a class="md-nav__link" href="../../optimizers/powells_method/">
         Powell's Method
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../random_restart_hill_climbing/">
+<a class="md-nav__link" href="../../optimizers/random_restart_hill_climbing/">
         Random Restart Hill Climbing
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../random_search/">
+<a class="md-nav__link" href="../../optimizers/random_search/">
         Random Search
       </a>
 </li>
@@ -227,37 +175,37 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../grid_search/">
+<a class="md-nav__link" href="../../optimizers/grid_search/">
         Grid Search
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../parallel_tempering/">
+<a class="md-nav__link" href="../../optimizers/parallel_tempering/">
         Parallel Tempering
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../particle_swarm_optimization/">
+<a class="md-nav__link" href="../../optimizers/particle_swarm_optimization/">
         Particle Swarm Optimization
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../evolution_strategy/">
+<a class="md-nav__link" href="../../optimizers/evolution_strategy/">
         Evolution Strategy
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../bayesian_optimization/">
+<a class="md-nav__link" href="../../optimizers/bayesian_optimization/">
         Bayesian Optimization
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../tree_structured_parzen_estimators/">
+<a class="md-nav__link" href="../../optimizers/tree_structured_parzen_estimators/">
         Tree Structured Parzen Estimators
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../forest_optimization/">
+<a class="md-nav__link" href="../../optimizers/forest_optimization/">
         Forest Optimization
       </a>
 </li>
@@ -279,42 +227,8 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#introduction">
-    Introduction
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#about-the-implementation">
-    About the implementation
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#parameters">
-    Parameters
-  </a>
-<nav aria-label="Parameters" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#epsilon">
-    epsilon
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#distribution">
-    distribution
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#n_neighbours">
-    n_neighbours
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#characteristics">
-    Characteristics
+<a class="md-nav__link" href="#max_sample_size">
+    max_sample_size
   </a>
 </li>
 </ul>
@@ -324,76 +238,19 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="hill-climbing">Hill Climbing</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Hill climbing is a very basic optimization technique, that explores the search space only localy. It starts at an initial point, which is often chosen randomly and continues to move to positions with a better solution. It has no method against getting stuck in local optima.</p>
-<h2 id="about-the-implementation">About the implementation</h2>
-<p>The hill climbing algorithm is saving the current position in the search space and finds a new position by selecting a random position around it. This is done with a gaussian <code>distribution</code>. So if the position is further away the probability of getting selected is lower, but never zero. This makes the hill climbing more heuristic and a bit more adaptable. The standard deviation of the gaussian distribution in each dimension is dependend on the size of the search space in the corresponding dimension. This improves the exploration performance if the sizes of the search space dimensions are differing from each other.</p>
-<h2 id="parameters">Parameters</h2>
-<h3 id="epsilon"><code>epsilon</code></h3>
-<p>The "step-size" of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the step size. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space.</p>
-<ul>
-<li>type: float</li>
-<li>default: 0.03</li>
-<li>typical range: 0.01 ... 0.3</li>
-</ul>
-<hr/>
-<h3 id="distribution"><code>distribution</code></h3>
-<p>The mathematical <code>distribution</code> the algorithm draws samples from.</p>
-<ul>
-<li>type: string</li>
-<li>default: "normal"</li>
-<li>typical range: "normal, laplace, logistic, gumbel"</li>
-</ul>
-<hr/>
-<h3 id="n_neighbours"><code>n_neighbours</code></h3>
-<p>The number of positions the algorithm explores from its current postion before jumping to the best one.</p>
+<h1>Max sample size</h1>
+<h3 id="max_sample_size"><code>max_sample_size</code></h3>
+<p>Parameter for the expected uncertainty of the estimation.</p>
 <ul>
 <li>type: int</li>
-<li>default: 3</li>
-<li>typical range: 1 ... 10</li>
+<li>default: 10000000</li>
+<li>typical range: 1000000 ... 100000000</li>
 </ul>
-<hr/>
-<h2 id="characteristics">Characteristics</h2>
-<p>🟢 Very well adapted to convex optimization problems</p>
-<p>🟢 Useful to do finetuning on a good initial starting position</p>
-<p>🔴 Expect average/poor results for non-convex problems</p>
-<p>🔵 Increase <code>epsilon</code> for better global exploration or decrease for local exploration</p>
-<p>🔵 The <code>distribution</code> changes the behaviour of the hill climbing in multiple ways</p>
-<p>🔵 A higher <code>n_neighbours</code> slows down the movement through the search space and improves selection of next position</p>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
-<nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Base Optimizer" class="md-footer__link md-footer__link--prev" href="../../base_optimizer/" rel="prev">
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
-</div>
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Previous
-              </span>
-              Base Optimizer
-            </div>
-</div>
-</a>
-<a aria-label="Next: Stochastic Hill Climbing" class="md-footer__link md-footer__link--next" href="../stochastic_hill_climbing/" rel="next">
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Next
-              </span>
-              Stochastic Hill Climbing
-            </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
-</div>
-</a>
-</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
