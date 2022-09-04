@@ -1,36 +1,18 @@
 # Random Search
 
-The random search explores by choosing a new position at random after each iteration. Some random search implementations choose a new position within a large hypersphere around the current position. The implementation in hyperactive is purely random across the search space in each step.
 
----
+## Introduction
 
-**Use case/properties:**
-- Very good as a first method of optimization or to start exploring the search space
-- For a short optimization run to get an acceptable solution
+The random search explores by choosing a new position at random after each iteration. 
+Some random search implementations choose a new position within a large hypersphere around 
+the current position. The implementation in hyperactive is purely random across the 
+search space in each step.
 
-<p align="center">
-<img src="./plots/search_paths/RandomSearch.png" width= 49%/>
-</p>
 
-<br>
 
-## Random Restart Hill Climbing
+## About the implementation
 
-Random restart hill climbing works by starting a hill climbing search and jumping to a random new position after a number of iterations.
+The random search is a very simple algorithm that has no parameters to change its behaviour.
+In each iteration the random position is selected via random.choice 
+from a list of possible positions.
 
-**Available parameters:**
-- epsilon
-- distribution
-- n_neighbours
-- n_restarts
-
----
-
-**Use case/properties:**
-- Good as a first method of optimization
-- For a short optimization run to get an acceptable solution
-
-<p align="center">
-<img src="./plots/search_paths/RandomRestartHillClimbing [('n_restarts', 5)].png" width= 49%/>
-<img src="./plots/search_paths/RandomRestartHillClimbing [('n_restarts', 10)].png" width= 49%/>
-</p>

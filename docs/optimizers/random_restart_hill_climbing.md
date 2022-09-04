@@ -1,24 +1,27 @@
-## Tabu Search
+# Random Restart Hill ClimbingOptimizer
 
-Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.
 
-**Available parameters:**
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory
+## Introduction
 
----
+Random restart hill climbing works by starting a hill climbing search and jumping to a random 
+new position after `n_iter_restart` iterations. 
+Those restarts should prevent the algorithm getting stuck in local optima.
 
-**Use case/properties:**
-- When you have a good initial point to start from
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width= 49%/>
-</p>
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width= 49%/>
-</p>
+## About the implementation
+
+The random restart hill climbing inherits its behaviour from the regular hill climbing and 
+expands it by jumping to a random position during the iteration step. 
+
+
+
+## Parameters
+
+{% include 'parameters/epsilon.md' %}
+
+{% include 'parameters/distribution.md' %}
+
+{% include 'parameters/n_neighbours.md' %}
+
+{% include 'parameters/n_iter_restart.md' %}

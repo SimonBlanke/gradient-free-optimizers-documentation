@@ -1,24 +1,32 @@
-## Tabu Search
+# Forest Optimization
 
-Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.
+## Introduction
 
-**Available parameters:**
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory
+The forest-optimizer calculates the expected improvement of the position space with a 
+tree-based model. This optimization technique is very similar to bayesian-optimization
+in every part, except its model.
 
----
 
-**Use case/properties:**
-- When you have a good initial point to start from
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width= 49%/>
-</p>
+## About the implementation
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width= 49%/>
-</p>
+implementation_ = """
+The forest-optimizer shares most of its code base with the bayesian-optimizer. Only its model, to 
+calculate the expected score and its standard deviation is different. Tree based models do not 
+calculate the standard deviation by them self. A modification is necessary to determine the
+standard deviation from the impurity of the trees in the ensemble.
+
+
+
+## Parameters
+
+{% include 'parameters/tree_regressor.md' %}
+
+{% include 'parameters/xi.md' %}
+
+{% include 'parameters/warm_start_smbo.md' %}
+
+{% include 'parameters/rand_rest_p.md' %}
+
+
+

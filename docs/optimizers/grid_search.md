@@ -1,24 +1,24 @@
-## Tabu Search
+# Grid Search
 
-Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.
 
-**Available parameters:**
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory
+## Introduction
 
----
+The grid search explores the search space by starting from a corner and progressing `step_size`-steps
+per iteration. Increasing the `step_size` enables a more uniform exploration of the search space. 
 
-**Use case/properties:**
-- When you have a good initial point to start from
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width= 49%/>
-</p>
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width= 49%/>
-</p>
+## About the implementation
+
+The implementation of this grid-search was realized by
+[Thomas Gak-Deluen](https://github.com/tgdn) and his team. The algorithm
+works by choosing a direction in the beginning and moving through the search space
+one 2-dimensional-plane at a time.
+
+
+
+## Parameters
+
+{% include 'parameters/step_size.md' %}
+
+

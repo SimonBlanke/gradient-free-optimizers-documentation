@@ -1,24 +1,30 @@
-## Tabu Search
+# Downhill Simplex Optimizer
 
-Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.
 
-**Available parameters:**
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory
+## Introduction
 
----
+The downhill simplex optimizer works by grouping `number of dimensions + 1`-positions into a simplex.
+The search space is explored by reflecting, expanding, contracting or shrinking the simplex via
+the `alpha`, `gamma`, `beta` or `sigma` parameters.
 
-**Use case/properties:**
-- When you have a good initial point to start from
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width= 49%/>
-</p>
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width= 49%/>
-</p>
+## About the implementation
+
+The **downhill simplex** algorithm works in a completly different way from the other local
+hill climbing based optimizers. It is much more complex, because there are 
+reflecting-, expanding-, contracting- and shrinking-steps for the iteration 
+(before new score is known) and the evaluation (after new score is known). This leads
+to a bigger and more complex source code than the hill climbing based algorithms.
+
+
+
+## Parameters
+
+{% include 'parameters/alpha.md' %}
+
+{% include 'parameters/gamma.md' %}
+
+{% include 'parameters/beta.md' %}
+
+{% include 'parameters/sigma.md' %}

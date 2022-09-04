@@ -1,24 +1,28 @@
-## Tabu Search
+# Tree Structured Parzen Estimators
 
-Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.
 
-**Available parameters:**
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory
+## Introduction
 
----
+Tree of Parzen Estimators also chooses new positions by calculating the expected improvement. 
+It does so by calculating the ratio of probability being among the best positions and 
+the worst positions. Those probabilities are determined with a kernel density estimator,
+that is trained on alrady evaluated positions.
 
-**Use case/properties:**
-- When you have a good initial point to start from
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width= 49%/>
-</p>
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width= 49%/>
-</p>
+## About the implementation
+
+Similar to other sequence-model-based optimization algorithms the positions and scores 
+of previous evaluations are saved as features and targets to train a machine learning algorithm.
+For the tree structured parzen estimators we use two kernel density estimators that get
+the training data from the best and worst positions to calculate the expected improvement.
+
+
+
+## Parameters
+
+{% include 'parameters/gamma_tpe.md' %}
+
+{% include 'parameters/warm_start_smbo.md' %}
+
+{% include 'parameters/rand_rest_p.md' %}

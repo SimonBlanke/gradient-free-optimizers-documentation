@@ -1,24 +1,28 @@
-## Tabu Search
+# Pattern Search
 
-Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.
 
-**Available parameters:**
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory
+## Introduction
 
----
+The pattern search works by initializing a cross-shaped collection of positions in the 
+search space. When all positions in the cross are evaluated the center of the cross moves
+to the best position. This leads to new positions inside the cross that have not been
+evaluated. If non of the positions have a better score than the center position the cross
+shrinks by the `reduction`-factor creating new positions inside the cross.
 
-**Use case/properties:**
-- When you have a good initial point to start from
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width= 49%/>
-</p>
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width= 49%/>
-</p>
+## About the implementation
+
+Similar to a population based optimization algorithm the pattern search has a list of information 
+about the positions and their scores to form the pattern. 
+As the pattern moves through the search space this information gets updated.
+
+
+
+## Parameters
+
+{% include 'parameters/n_positions.md' %}
+
+{% include 'parameters/pattern_size.md' %}
+
+{% include 'parameters/reduction.md' %}

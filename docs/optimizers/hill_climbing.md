@@ -21,18 +21,3 @@ The hill climbing algorithm is saving the current position in the search space a
 
 {% include 'parameters/n_neighbours.md' %}
 
-
-
-## Characteristics
-
-🟢 Very well adapted to convex optimization problems
-
-🟢 Useful to do finetuning on a good initial starting position
-
-🔴 Expect average/poor results for non-convex problems
-
-🔵 Increase `epsilon` for better global exploration or decrease for local exploration
-
-🔵 The `distribution` changes the behaviour of the hill climbing in multiple ways
-
-🔵 A higher `n_neighbours` slows down the movement through the search space and improves selection of next position

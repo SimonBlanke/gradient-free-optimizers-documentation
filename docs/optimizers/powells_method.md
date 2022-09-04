@@ -1,24 +1,28 @@
-## Tabu Search
+# Powell's Method
 
-Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.
 
-**Available parameters:**
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory
+## Introduction
 
----
+This powell's method implementation works by optimizing each search space dimension at a 
+time with a hill climbing algorithm. This works by setting the 
+search space range for all dimensions except one to a single value. The hill climbing
+algorithms searches the best position within this dimension. 
+After `iters_p_dim` iterations the next dimension is searched, while the 
+search space range from the previously searched dimension is set to the best position,
+This way the algorithm finds new best positions one dimension at a time.
 
-**Use case/properties:**
-- When you have a good initial point to start from
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width= 49%/>
-</p>
 
-<p align="center">
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width= 49%/>
-<img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width= 49%/>
-</p>
+## About the implementation
+
+The powell's method implemented in Gradient-Free-Optimizers does only see one dimension at a time.
+This differs from the original idea of creating (and searching through) 
+one search-vector at a time, that spans through multiple dimensions.
+
+
+
+## Parameters
+
+{% include 'parameters/iters_p_dim.md' %}
+
+

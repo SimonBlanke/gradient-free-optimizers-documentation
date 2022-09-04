@@ -1,36 +1,33 @@
 # Simulated Annealing
 
-Simulated annealing chooses its next possible position similar to hill climbing, but it accepts worse results with a probability that decreases with time:
 
-<p align="center">
-  <a href="equation">
-    <img src="https://latex.codecogs.com/gif.latex?p%20%3D%20exp%20%5Cleft%20%28%20-%5Cfrac%7B%5CDelta%20f_%7Bnorm%7D%7D%7BT%7D%20%5Cright%20%29">
-  </a>
-</p>
+## Introduction
 
-It simulates a temperature that decreases with each iteration, similar to a material cooling down. The following normalization is used to calculate the probability independent of the metric:
+Simulated annealing chooses its next possible position similar to hill climbing, but it accepts 
+worse results with a probability that decreases with time.
+It simulates a temperature that decreases with each iteration, similar to a material cooling down.
 
-<p align="center">
-  <a href="equation">
-    <img src="https://latex.codecogs.com/gif.latex?%5CDelta%20f_%7Bnorm%7D%20%3D%20%5Cfrac%7Bf%28y%29%20-%20f%28y%29%7D%7Bf%28y%29%20&plus;%20f%28y%29%7D">
-  </a>
-</p>
 
-**Available parameters:**
-- epsilon
-- distribution
-- n_neighbours
-- start_temp
-- annealing_rate
-- norm_factor
 
----
+## About the implementation
 
-**Use case/properties:**
-- When you have a good initial point to start from, but expect the surrounding search space to be very complex
-- Good as a second method of optimization
+The **simulated annealing** algorithm inherits the methods from the regular hill climbing.
+Similar to stochastic hill climbing it may accept a worse position with the goal of
+escaping a local optimum. The `start_temp` is a factor for the probability of accepting 
+a worse position. This probability decreases over time, because of the ànnealing_rate`
+decreasing the `start_temp` over time.
 
-<p align="center">
-<img src="./plots/search_paths/SimulatedAnnealing [('annealing_rate', 0.8)].png" width= 49%/>
-<img src="./plots/search_paths/SimulatedAnnealing [('annealing_rate', 0.9)].png" width= 49%/>
-</p>
+
+
+## Parameters
+
+{% include 'parameters/epsilon.md' %}
+
+{% include 'parameters/distribution.md' %}
+
+{% include 'parameters/n_neighbours.md' %}
+
+{% include 'parameters/n_neighbours.md' %}
+
+{% include 'parameters/n_neighbours.md' %}
+
