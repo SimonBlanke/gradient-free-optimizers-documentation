@@ -5,3 +5,5 @@ The number of positions the algorithm explores from its current postion before j
   - type: int
   - default: 3
   - typical range: 1 ... 10
+
+---

@@ -5,3 +5,5 @@ If the algorithm does not find a better position the repulsion factor increases 
   - type: float
   - default: 5
   - typical range: 2 ... 10
+
+---

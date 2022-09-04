@@ -17,18 +17,10 @@ The hill climbing algorithm is saving the current position in the search space a
 
 {% include 'parameters/epsilon.md' %}
 
-
----
-
 {% include 'parameters/distribution.md' %}
-
-
----
 
 {% include 'parameters/n_neighbours.md' %}
 
-
----
 
 
 ## Characteristics

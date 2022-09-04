@@ -6,3 +6,5 @@ model classes can be found in a separate repository.
   - type: string
   - default: extra_tree
   - typical range: "extra_tree, random_forest, gradient_boost"
+
+---

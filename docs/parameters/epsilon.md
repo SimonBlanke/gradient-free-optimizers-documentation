@@ -5,3 +5,5 @@ The "step-size" of the hill climbing algorithm. Increasing `epsilon` also increa
   - type: float
   - default: 0.03
   - typical range: 0.01 ... 0.3
+
+---

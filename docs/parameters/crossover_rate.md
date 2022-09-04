@@ -6,3 +6,5 @@ Probability of an individual to perform a crossover with the best individual in 
   - type: float
   - default: 0.3
   - typical range: 0.1 ... 0.9
+
+---

@@ -5,3 +5,5 @@ The probability factor used in the equation to calculate of a worse position is 
   - type: float
   - default: 0.1
   - typical range: 0.01 ... 10
+
+---

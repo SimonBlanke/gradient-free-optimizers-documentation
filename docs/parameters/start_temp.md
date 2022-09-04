@@ -5,3 +5,5 @@ The start temperatur determines the probability for the algorithm to jump to a w
   - type: float
   - default: 1
   - typical range: 0.5 ... 1.5
+
+---

@@ -6,3 +6,5 @@ temperatures of the individual optimizers in the population.
   - type: int
   - default: 10
   - typical range: 5 ... 50
+
+---
