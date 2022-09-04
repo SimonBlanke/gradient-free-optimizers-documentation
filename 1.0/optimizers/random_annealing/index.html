@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
-<title>Sequential methods - Gradient Free Optimizers</title>
+<title>Random Annealing - Gradient Free Optimizers</title>
 <link href="../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#bayesian-optimization">
+<a class="md-skip" href="#random-annealing">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Sequential methods
+              Random Annealing
             
           </span>
 </div>
@@ -227,13 +227,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#bayesian-optimization">
-    Bayesian Optimization
+<a class="md-nav__link" href="#introduction">
+    Introduction
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tree-of-parzen-estimators">
-    Tree of Parzen Estimators
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
   </a>
 </li>
 </ul>
@@ -243,39 +243,12 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>Sequential methods</h1>
-<h2 id="bayesian-optimization">Bayesian Optimization</h2>
-<p>Bayesian optimization chooses new positions by calculating the expected improvement of every position in the search space based on a gaussian process that trains on already evaluated positions.</p>
-<p><strong>Available parameters:</strong>
-- gpr
-- xi
-- start_up_evals
-- skip_retrain
-- max_sample_size
-- warm_start_smbo</p>
-<hr/>
-<p><strong>Use case/properties:</strong>
-- If model evaluations take a long time
-- If you do not want to do many iterations
-- If your search space is not to big</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/Bayesian.png"><img src="./plots/search_paths/Bayesian.png" width="49%/"/></a>
-</p>
-<p><br/></p>
-<h2 id="tree-of-parzen-estimators">Tree of Parzen Estimators</h2>
-<p>Tree of Parzen Estimators also chooses new positions by calculating the expected improvement. It does so by calculating the ratio of probability being among the best positions and the worst positions. Those probabilities are determined with a kernel density estimator, that is trained on alrady evaluated positions.</p>
-<p><strong>Available parameters:</strong>
-- tree_regressor
-- gamma_tpe
-- start_up_evals
-- skip_retrain
-- max_sample_size
-- warm_start_smbo</p>
-<hr/>
-<p><strong>Use case/properties:</strong>
-- If model evaluations take a long time
-- If you do not want to do many iterations
-- If your search space is not to big</p>
+<h1 id="random-annealing">Random Annealing</h1>
+<h2 id="introduction">Introduction</h2>
+<p>An algorithm that chooses a new position within a large hypersphere around the current position. 
+This hypersphere gets smaller over time.</p>
+<h2 id="about-the-implementation">About the implementation</h2>
+<p>...</p>
 </article>
 </div>
 </div>

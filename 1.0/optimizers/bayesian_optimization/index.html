@@ -210,9 +210,43 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tree-of-parzen-estimators">
-    Tree of Parzen Estimators
+<a class="md-nav__link" href="#introduction">
+    Introduction
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gpr">
+    gpr
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#xi">
+    xi
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#warm_start_smbo">
+    warm_start_smbo
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rand_rest_p">
+    rand_rest_p
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -245,9 +279,43 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tree-of-parzen-estimators">
-    Tree of Parzen Estimators
+<a class="md-nav__link" href="#introduction">
+    Introduction
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gpr">
+    gpr
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#xi">
+    xi
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#warm_start_smbo">
+    warm_start_smbo
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rand_rest_p">
+    rand_rest_p
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -257,37 +325,53 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="bayesian-optimization">Bayesian Optimization</h1>
-<p>Bayesian optimization chooses new positions by calculating the expected improvement of every position in the search space based on a gaussian process that trains on already evaluated positions.</p>
-<p><strong>Available parameters:</strong>
-- gpr
-- xi
-- start_up_evals
-- skip_retrain
-- max_sample_size
-- warm_start_smbo</p>
+<h2 id="introduction">Introduction</h2>
+<p>Bayesian optimization chooses new positions by calculating the expected 
+improvement of every position in the search space based on a gaussian process 
+that trains on already evaluated positions.</p>
+<h2 id="about-the-implementation">About the implementation</h2>
+<p>The bayesian optimizer collects the information about the position and score in each 
+iteration. The gaussian process regressor fits to the position (features) and score (target),
+and predicts the scores of all unknown positions. This is why the bayesian optimization needs
+at least one initial position. The gaussian process returns the standard deviation 
+in addition to the prediction (or mean), both of which are required to 
+compute the acquisition function.
+The position of the best predicted score
+is evaluated next. The selected position and its true score is then collected, 
+restarting the cycle.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="gpr"><code>gpr</code></h3>
+<p>The access to the surrogate model class. </p>
+<ul>
+<li>type: class</li>
+<li>default: -</li>
+<li>typical range: -</li>
+</ul>
 <hr/>
-<p><strong>Use case/properties:</strong>
-- If model evaluations take a long time
-- If you do not want to do many iterations
-- If your search space is not to big</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/Bayesian.png"><img src="./plots/search_paths/Bayesian.png" width="49%/"/></a>
-</p>
-<p><br/></p>
-<h2 id="tree-of-parzen-estimators">Tree of Parzen Estimators</h2>
-<p>Tree of Parzen Estimators also chooses new positions by calculating the expected improvement. It does so by calculating the ratio of probability being among the best positions and the worst positions. Those probabilities are determined with a kernel density estimator, that is trained on alrady evaluated positions.</p>
-<p><strong>Available parameters:</strong>
-- tree_regressor
-- gamma_tpe
-- start_up_evals
-- skip_retrain
-- max_sample_size
-- warm_start_smbo</p>
+<h3 id="xi"><code>xi</code></h3>
+<p>Parameter for the expected uncertainty of the estimation.</p>
+<ul>
+<li>type: float</li>
+<li>default: 0.3</li>
+<li>typical range: 0.1 ... 0.9</li>
+</ul>
 <hr/>
-<p><strong>Use case/properties:</strong>
-- If model evaluations take a long time
-- If you do not want to do many iterations
-- If your search space is not to big</p>
+<h3 id="warm_start_smbo"><code>warm_start_smbo</code></h3>
+<p>Dataframe that contains the search data of a previous optimization run.</p>
+<ul>
+<li>type: float</li>
+<li>default: 0.03</li>
+<li>typical range: 0.01 ... 0.3</li>
+</ul>
+<hr/>
+<h3 id="rand_rest_p"><code>rand_rest_p</code></h3>
+<p>Probability for the optimization algorithm to jump to a random position in an iteration step.</p>
+<ul>
+<li>type: float</li>
+<li>default: 0</li>
+<li>typical range: 0.01 ... 0.1</li>
+</ul>
+<hr/>
 </article>
 </div>
 </div>

@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#tabu-search">
+<a class="md-skip" href="#grid-search">
           Skip to content
         </a>
 </div>
@@ -190,9 +190,28 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tabu-search">
-    Tabu Search
+<a class="md-nav__link" href="#introduction">
+    Introduction
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step_size">
+    step_size
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -245,9 +264,28 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tabu-search">
-    Tabu Search
+<a class="md-nav__link" href="#introduction">
+    Introduction
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step_size">
+    step_size
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -256,25 +294,28 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>Grid Search</h1>
-<h2 id="tabu-search">Tabu Search</h2>
-<p>Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.</p>
-<p><strong>Available parameters:</strong>
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory</p>
+<h1 id="grid-search">Grid Search</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The grid search explores the search space by starting from a corner and progressing <code>step_size</code>-steps
+per iteration. Increasing the <code>step_size</code> enables a more uniform exploration of the search space. </p>
+<h2 id="about-the-implementation">About the implementation</h2>
+<p>The implementation of this grid-search was realized by
+<a href="https://github.com/tgdn">Thomas Gak-Deluen</a> and his team. The algorithm
+works by choosing a direction in the beginning and moving through the search space
+one 2-dimensional-plane at a time.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="step_size"><code>step_size</code></h3>
+<p>The number of steps the grid search takes after each iteration. If this parameter is 
+set to 3 the grid search won't select the next position, but the one it would normally
+select after 3 iterations. This way we get a sparse grid after the first pass through
+the search space. After the first pass is done the grid search starts at the beginning
+and does a second pass with the same step size. And a third pass after that.</p>
+<ul>
+<li>type: int</li>
+<li>default: 1</li>
+<li>typical range: 1 ... 1000</li>
+</ul>
 <hr/>
-<p><strong>Use case/properties:</strong>
-- When you have a good initial point to start from</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width="49%/"/></a>
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width="49%/"/></a>
-</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width="49%/"/></a>
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width="49%/"/></a>
-</p>
 </article>
 </div>
 </div>

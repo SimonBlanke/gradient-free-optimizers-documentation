@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#tabu-search">
+<a class="md-skip" href="#random-restart-hill-climbingoptimizer">
           Skip to content
         </a>
 </div>
@@ -175,9 +175,43 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tabu-search">
-    Tabu Search
+<a class="md-nav__link" href="#introduction">
+    Introduction
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#epsilon">
+    epsilon
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution">
+    distribution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_neighbours">
+    n_neighbours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_iter_restart">
+    n_iter_restart
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -245,9 +279,43 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tabu-search">
-    Tabu Search
+<a class="md-nav__link" href="#introduction">
+    Introduction
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#epsilon">
+    epsilon
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution">
+    distribution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_neighbours">
+    n_neighbours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_iter_restart">
+    n_iter_restart
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -256,25 +324,47 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>Random Restart Hill Climbing</h1>
-<h2 id="tabu-search">Tabu Search</h2>
-<p>Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.</p>
-<p><strong>Available parameters:</strong>
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory</p>
+<h1 id="random-restart-hill-climbingoptimizer">Random Restart Hill ClimbingOptimizer</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Random restart hill climbing works by starting a hill climbing search and jumping to a random 
+new position after <code>n_iter_restart</code> iterations. 
+Those restarts should prevent the algorithm getting stuck in local optima.</p>
+<h2 id="about-the-implementation">About the implementation</h2>
+<p>The random restart hill climbing inherits its behaviour from the regular hill climbing and 
+expands it by jumping to a random position during the iteration step. </p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="epsilon"><code>epsilon</code></h3>
+<p>The "step-size" of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the step size. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space.</p>
+<ul>
+<li>type: float</li>
+<li>default: 0.03</li>
+<li>typical range: 0.01 ... 0.3</li>
+</ul>
 <hr/>
-<p><strong>Use case/properties:</strong>
-- When you have a good initial point to start from</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width="49%/"/></a>
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width="49%/"/></a>
-</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width="49%/"/></a>
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width="49%/"/></a>
-</p>
+<h3 id="distribution"><code>distribution</code></h3>
+<p>The mathematical <code>distribution</code> the algorithm draws samples from.</p>
+<ul>
+<li>type: string</li>
+<li>default: "normal"</li>
+<li>typical range: "normal, laplace, logistic, gumbel"</li>
+</ul>
+<hr/>
+<h3 id="n_neighbours"><code>n_neighbours</code></h3>
+<p>The number of positions the algorithm explores from its current postion before jumping to the best one.</p>
+<ul>
+<li>type: int</li>
+<li>default: 3</li>
+<li>typical range: 1 ... 10</li>
+</ul>
+<hr/>
+<h3 id="n_iter_restart"><code>n_iter_restart</code></h3>
+<p>The number of iterations the algorithm performs before jumping to a random position.</p>
+<ul>
+<li>type: int</li>
+<li>default: 10</li>
+<li>typical range: 5 ... 20</li>
+</ul>
+<hr/>
 </article>
 </div>
 </div>

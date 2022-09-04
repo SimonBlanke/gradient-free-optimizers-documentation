@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#tabu-search">
+<a class="md-skip" href="#downhill-simplex-optimizer">
           Skip to content
         </a>
 </div>
@@ -160,9 +160,43 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tabu-search">
-    Tabu Search
+<a class="md-nav__link" href="#introduction">
+    Introduction
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alpha">
+    alpha
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gamma">
+    gamma
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#beta">
+    beta
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sigma">
+    sigma
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -245,9 +279,43 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tabu-search">
-    Tabu Search
+<a class="md-nav__link" href="#introduction">
+    Introduction
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alpha">
+    alpha
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gamma">
+    gamma
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#beta">
+    beta
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sigma">
+    sigma
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -256,25 +324,50 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>Downhill Simplex Optimization</h1>
-<h2 id="tabu-search">Tabu Search</h2>
-<p>Tabu search is a metaheuristic method, that explores new positions like hill climbing but memorizes previous positions and avoids those. This helps finding new trajectories through the search space.</p>
-<p><strong>Available parameters:</strong>
-- epsilon
-- distribution
-- n_neighbours
-- tabu_memory</p>
+<h1 id="downhill-simplex-optimizer">Downhill Simplex Optimizer</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The downhill simplex optimizer works by grouping <code>number of dimensions + 1</code>-positions into a simplex.
+The search space is explored by reflecting, expanding, contracting or shrinking the simplex via
+the <code>alpha</code>, <code>gamma</code>, <code>beta</code> or <code>sigma</code> parameters.</p>
+<h2 id="about-the-implementation">About the implementation</h2>
+<p>The <strong>downhill simplex</strong> algorithm works in a completly different way from the other local
+hill climbing based optimizers. It is much more complex, because there are 
+reflecting-, expanding-, contracting- and shrinking-steps for the iteration 
+(before new score is known) and the evaluation (after new score is known). This leads
+to a bigger and more complex source code than the hill climbing based algorithms.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="alpha"><code>alpha</code></h3>
+<p>Reflection parameter of the simplex algorithm.</p>
+<ul>
+<li>type: float</li>
+<li>default: 1</li>
+<li>typical range: 0.5 ... 2</li>
+</ul>
 <hr/>
-<p><strong>Use case/properties:</strong>
-- When you have a good initial point to start from</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 1)].png" width="49%/"/></a>
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 3)].png" width="49%/"/></a>
-</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 10)].png" width="49%/"/></a>
-<a class="glightbox" href="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png"><img src="./plots/search_paths/TabuSearch [('tabu_memory', 3), ('epsilon', 0.1)].png" width="49%/"/></a>
-</p>
+<h3 id="gamma"><code>gamma</code></h3>
+<p>Expansion parameter of the simplex algorithm.</p>
+<ul>
+<li>type: float</li>
+<li>default: 2</li>
+<li>typical range: 0.5 ... 5</li>
+</ul>
+<hr/>
+<h3 id="beta"><code>beta</code></h3>
+<p>Contraction parameter of the simplex algorithm.</p>
+<ul>
+<li>type: float</li>
+<li>default: 0.5</li>
+<li>typical range: 0.25 ... 3</li>
+</ul>
+<hr/>
+<h3 id="sigma"><code>sigma</code></h3>
+<p>Shrinking parameter of the simplex algorithm.</p>
+<ul>
+<li>type: float</li>
+<li>default: 0.5</li>
+<li>typical range: 0.25 ... 3</li>
+</ul>
+<hr/>
 </article>
 </div>
 </div>

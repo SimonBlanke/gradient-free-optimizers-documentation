@@ -181,9 +181,55 @@
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Parallel Tempering
+          <span class="md-nav__icon md-icon"></span>
+</label>
 <a class="md-nav__link md-nav__link--active" href="./">
         Parallel Tempering
       </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+    Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#population">
+    population
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_iter_swap">
+    n_iter_swap
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rand_rest_p">
+    rand_rest_p
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../particle_swarm_optimization/">
@@ -222,6 +268,46 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+    Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#population">
+    population
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_iter_swap">
+    n_iter_swap
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rand_rest_p">
+    rand_rest_p
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -229,27 +315,41 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="parallel-tempering">Parallel Tempering</h1>
-<p>Parallel Tempering initializes multiple simulated annealing searches with different temperatures and chooses to swap those temperatures with the following probability:</p>
-<p align="center">
-<a href="equation">
-<a class="glightbox" href="https://latex.codecogs.com/gif.latex?p%20%3D%20%5Cmin%20%5Cleft%20%28%201%2C%20e%5E%7B%5CDelta%20f%20%5Cleft%20%28%20%5Cfrac%7B1%7D%7BT_x%7D%20-%20%5Cfrac%7B1%7D%7BT_y%7D%20%5Cright%20%29%7D%20%5Cright%20%29"><img src="https://latex.codecogs.com/gif.latex?p%20%3D%20%5Cmin%20%5Cleft%20%28%201%2C%20e%5E%7B%5CDelta%20f%20%5Cleft%20%28%20%5Cfrac%7B1%7D%7BT_x%7D%20-%20%5Cfrac%7B1%7D%7BT_y%7D%20%5Cright%20%29%7D%20%5Cright%20%29"/></a>
-</a>
-</p>
-<p><strong>Available parameters:</strong>
-- epsilon
-- distribution
-- n_neighbours
-- annealing_rate
-- system_temperatures
-- n_swaps</p>
+<h2 id="introduction">Introduction</h2>
+<p>Parallel Tempering initializes multiple simulated annealing searches with different 
+temperatures and chooses to swap those temperatures with a probability based on 
+its temperature and difference of current scores.</p>
+<h2 id="about-the-implementation">About the implementation</h2>
+<p>The population of the parallel tempering optimizer consists of multiple initializations
+of the simulated annealing optimizer class. Each of those receives a random starting temperature.
+The algorithm calculates the probability of swapping temperatures
+for every combination of annealer instances. </p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="population"><code>population</code></h3>
+<p>Size of the population for population-based optimization algorithms.</p>
+<ul>
+<li>type: int</li>
+<li>default: 10</li>
+<li>typical range: 4 ... 25</li>
+</ul>
 <hr/>
-<p><strong>Use case/properties:</strong>
-- Not as dependend of a good initial position as simulated annealing
-- If you have enough time for many model evaluations</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/ParallelTempering [('system_temperatures', [0.1, 1, 10, 100])].png"><img src="./plots/search_paths/ParallelTempering [('system_temperatures', [0.1, 1, 10, 100])].png" width="49%/"/></a>
-<a class="glightbox" href="./plots/search_paths/ParallelTempering [('system_temperatures', [0.01, 100])].png"><img src="./plots/search_paths/ParallelTempering [('system_temperatures', [0.01, 100])].png" width="49%/"/></a>
-</p>
+<h3 id="n_iter_swap"><code>n_iter_swap</code></h3>
+<p>The number of iterations the algorithm performs before switching 
+temperatures of the individual optimizers in the population.</p>
+<ul>
+<li>type: int</li>
+<li>default: 10</li>
+<li>typical range: 5 ... 50</li>
+</ul>
+<hr/>
+<h3 id="rand_rest_p"><code>rand_rest_p</code></h3>
+<p>Probability for the optimization algorithm to jump to a random position in an iteration step.</p>
+<ul>
+<li>type: float</li>
+<li>default: 0</li>
+<li>typical range: 0.01 ... 0.1</li>
+</ul>
+<hr/>
 </article>
 </div>
 </div>

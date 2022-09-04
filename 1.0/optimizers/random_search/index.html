@@ -180,8 +180,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#random-restart-hill-climbing">
-    Random Restart Hill Climbing
+<a class="md-nav__link" href="#introduction">
+    Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
   </a>
 </li>
 </ul>
@@ -245,8 +250,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#random-restart-hill-climbing">
-    Random Restart Hill Climbing
+<a class="md-nav__link" href="#introduction">
+    Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
   </a>
 </li>
 </ul>
@@ -257,30 +267,15 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="random-search">Random Search</h1>
-<p>The random search explores by choosing a new position at random after each iteration. Some random search implementations choose a new position within a large hypersphere around the current position. The implementation in hyperactive is purely random across the search space in each step.</p>
-<hr/>
-<p><strong>Use case/properties:</strong>
-- Very good as a first method of optimization or to start exploring the search space
-- For a short optimization run to get an acceptable solution</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/RandomSearch.png"><img src="./plots/search_paths/RandomSearch.png" width="49%/"/></a>
-</p>
-<p><br/></p>
-<h2 id="random-restart-hill-climbing">Random Restart Hill Climbing</h2>
-<p>Random restart hill climbing works by starting a hill climbing search and jumping to a random new position after a number of iterations.</p>
-<p><strong>Available parameters:</strong>
-- epsilon
-- distribution
-- n_neighbours
-- n_restarts</p>
-<hr/>
-<p><strong>Use case/properties:</strong>
-- Good as a first method of optimization
-- For a short optimization run to get an acceptable solution</p>
-<p align="center">
-<a class="glightbox" href="./plots/search_paths/RandomRestartHillClimbing [('n_restarts', 5)].png"><img src="./plots/search_paths/RandomRestartHillClimbing [('n_restarts', 5)].png" width="49%/"/></a>
-<a class="glightbox" href="./plots/search_paths/RandomRestartHillClimbing [('n_restarts', 10)].png"><img src="./plots/search_paths/RandomRestartHillClimbing [('n_restarts', 10)].png" width="49%/"/></a>
-</p>
+<h2 id="introduction">Introduction</h2>
+<p>The random search explores by choosing a new position at random after each iteration. 
+Some random search implementations choose a new position within a large hypersphere around 
+the current position. The implementation in hyperactive is purely random across the 
+search space in each step.</p>
+<h2 id="about-the-implementation">About the implementation</h2>
+<p>The random search is a very simple algorithm that has no parameters to change its behaviour.
+In each iteration the random position is selected via random.choice 
+from a list of possible positions.</p>
 </article>
 </div>
 </div>
