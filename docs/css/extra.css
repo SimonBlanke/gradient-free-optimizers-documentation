@@ -7,7 +7,12 @@ h1 {
 
 h2 {
     margin: 3rem 0rem 0rem 0rem !important;
-    border-bottom: solid 1px rgb(70, 150, 236);
+    border-bottom: solid 3px rgb(70, 150, 236);
+}
+
+h3 {
+    margin: 1rem 0rem 0rem 0rem !important;
+    border-left: solid 3px rgb(70, 150, 236);
 }
 
 
