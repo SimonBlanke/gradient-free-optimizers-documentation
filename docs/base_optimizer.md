@@ -1,20 +1,55 @@
-# Introduction
+# Base Optimizer
 
 
-# Overview
+## Parameters
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+The following arguments can be passed to each optimization class:
 
-## Commands
+### `search_space`
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+- **type:** `dict`
 
-## Project layout
+Pass the search_space to the optimizer class to define the space were the optimization algorithm can search for the best parameters for the given objective function.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+
+
+example:
+```python
+...
+search_space = {
+    "x1": numpy.arange(-10, 31, 0.3),
+    "x2": numpy.arange(-10, 31, 0.3),
+}
+
+opt = HillClimbingOptimizer(search_space)
+
+...
+```
+
+---
+
+### `initialize` 
+
+- **type:** `dict`, `None`
+- **default:** `{"grid": 8, "vertices": 8, "random": 4, "warm_start": []}`
+
+The initialization dictionary automatically determines a number of parameters that will be evaluated in the first n iterations (n is the sum of the values in initialize). The initialize keywords are the following:
+
+- `grid`: Initializes positions in a grid like pattern. Positions that cannot be put into a grid are randomly positioned.
+
+- `vertices`: Initializes positions at the vertices of the search space. Positions that cannot be put into a vertices are randomly positioned.
+
+- `random`: Number of random initialized positions
+
+- `warm_start`: List of parameter dictionaries that marks additional start points for the optimization run.
+  
+
+---
+
+### `random_state` 
+
+- **type:** `int`, `None`
+- **default:** `None`
+
+Random state for random processes in the random, numpy and scipy module.
+
