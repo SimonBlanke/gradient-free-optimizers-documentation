@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
-<title>Stochastic Hill Climbing - Gradient Free Optimizers</title>
+<title>Repulsing Hill Climbing - Gradient Free Optimizers</title>
 <link href="../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#stochastic-hill-climbing">
+<a class="md-skip" href="#repulsing-hill-climbing">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Stochastic Hill Climbing
+              Repulsing Hill Climbing
             
           </span>
 </div>
@@ -122,8 +122,8 @@
         Attributes
       </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5">
           Optimization Algorithms
           <span class="md-nav__icon md-icon"></span>
@@ -148,6 +148,63 @@
 <a class="md-nav__link" href="../simulated_annealing/">
         Simulated Annealing
       </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Repulsing Hill Climbing
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Repulsing Hill Climbing
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#introduction">
+    Introduction
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#about-the-implementation">
+    About the implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+<nav aria-label="Parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#epsilon">
+    epsilon
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution">
+    distribution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_neighbours">
+    n_neighbours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#repulsion_factor">
+    repulsion_factor
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../downhill_simplex/">
@@ -252,6 +309,21 @@
     epsilon
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#distribution">
+    distribution
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#n_neighbours">
+    n_neighbours
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#repulsion_factor">
+    repulsion_factor
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -262,11 +334,17 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="stochastic-hill-climbing">Stochastic Hill Climbing</h1>
+<h1 id="repulsing-hill-climbing">Repulsing Hill Climbing</h1>
 <h2 id="introduction">Introduction</h2>
-<p>......</p>
+<p>The <strong>repulsing hill climbing</strong> optimization algorithm improves the normal hill 
+climbing by adding a way to escape local optimia. If no better position is 
+found within the next <code>n_neighbours</code> positions the algorithm will increase 
+<code>epsilon</code> by multiplying the <code>repulsion_factor</code> for the next iteration.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
-<p>......</p>
+<p>Similar to other hill climbing based algorithms the <strong>repulsing hill climbing</strong>
+inherits the methods from the regular hill climbing and adds a functionality to
+escape local optima. The repulsing hill climbing temporally increases <code>epsilon</code>
+to jump out of the current region.</p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="epsilon"><code>epsilon</code></h3>
 <p>The "step-size" of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the step size. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space.</p>
@@ -276,11 +354,63 @@
 <li>typical range: 0.01 ... 0.3</li>
 </ul>
 <hr/>
+<h3 id="distribution"><code>distribution</code></h3>
+<p>The mathematical <code>distribution</code> the algorithm draws samples from.</p>
+<ul>
+<li>type: string</li>
+<li>default: "normal"</li>
+<li>typical range: "normal, laplace, logistic, gumbel"</li>
+</ul>
+<hr/>
+<h3 id="n_neighbours"><code>n_neighbours</code></h3>
+<p>The number of positions the algorithm explores from its current postion before jumping to the best one.</p>
+<ul>
+<li>type: int</li>
+<li>default: 3</li>
+<li>typical range: 1 ... 10</li>
+</ul>
+<hr/>
+<h3 id="repulsion_factor"><code>repulsion_factor</code></h3>
+<p>If the algorithm does not find a better position the repulsion factor increases epsilon for the next jump.</p>
+<ul>
+<li>type: float</li>
+<li>default: 5</li>
+<li>typical range: 2 ... 10</li>
+</ul>
+<hr/>
 </article>
 </div>
 </div>
 </main>
 <footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Simulated Annealing" class="md-footer__link md-footer__link--prev" href="../simulated_annealing/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Simulated Annealing
+            </div>
+</div>
+</a>
+<a aria-label="Next: Downhill Simplex Optimization" class="md-footer__link md-footer__link--next" href="../downhill_simplex/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              Downhill Simplex Optimization
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
