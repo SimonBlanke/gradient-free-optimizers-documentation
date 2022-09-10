@@ -23,7 +23,7 @@ $$
 This probability decreases over time, because of the `annealing_rate` decreasing the `start_temp` over time.
 
 $$
-\text{temp} = \text{start_temp} * \text{annealing_rate}
+\text{start_temp} \leftarrow  \text{start_temp} * \text{annealing_rate}
 $$
 
 
