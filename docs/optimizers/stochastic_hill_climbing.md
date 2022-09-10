@@ -13,7 +13,7 @@ a non-convex optimization problem over many iterations.
 
 ## About the implementation
 
-The stochastic hill climbing inherits the behaviour of the regular hill climbing algorithm and
+The **stochastic hill climbing** inherits the behaviour of the regular hill climbing algorithm and
 adds its additional functionality after the evaluation of the score is done. 
 If the new score is not better than the previous one the algorithm starts the following calculation:
 
