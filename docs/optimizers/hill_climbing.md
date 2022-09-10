@@ -15,7 +15,7 @@ If the `distribution` is "normal" (default) the hill climbing algorithm will sam
 
 $$
 f(x) = \frac{1}{\sigma\sqrt{2\pi}} 
-  \exp\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{\!2}\,\right)
+  \exp^{\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{\!2}\,\right)}
 $$
 
 In this equation $\mu$ is the current position in the search space and $\sigma$ is calculated with the size of the search space in each dimension and the epsilon.
