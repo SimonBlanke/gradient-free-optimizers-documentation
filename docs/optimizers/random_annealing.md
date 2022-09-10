@@ -12,3 +12,17 @@ This hypersphere gets smaller over time.
 
 ...
 
+
+
+## Parameters
+
+{% include 'parameters/epsilon.md' %}
+
+{% include 'parameters/distribution.md' %}
+
+{% include 'parameters/n_neighbours.md' %}
+
+{% include 'parameters/start_temp_random_annealing.md' %}
+
+{% include 'parameters/annealing_rate.md' %}
+
