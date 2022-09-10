@@ -67,7 +67,7 @@ nav:
       - Powell's Method: optimizers/powells_method.md
       - Random Restart Hill Climbing: optimizers/random_restart_hill_climbing.md
       - Random Search: optimizers/random_search.md
-      - Random Annealing: experimental/random_annealing.md
+      - Random Annealing: optimizers/random_annealing.md
       - Grid Search: optimizers/grid_search.md
       - Parallel Tempering: optimizers/parallel_tempering.md
       - Particle Swarm Optimization: optimizers/particle_swarm_optimization.md
