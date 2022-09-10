@@ -1,9 +1,9 @@
 ### `distribution`
 
-The mathematical `distribution` the algorithm draws samples from.
+The mathematical `distribution` the algorithm draws samples from. All available distributions are taken from the numpy-package.
 
-  - type: string
-  - default: "normal"
-  - typical range: "normal, laplace, logistic, gumbel"
+  - **type**: string
+  - **default**: "normal"
+  - **possible values**: "normal", "laplace", "logistic", gumbel"
 
 ---
