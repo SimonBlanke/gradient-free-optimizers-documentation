@@ -191,13 +191,13 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#n_neighbours_1">
-    n_neighbours
+<a class="md-nav__link" href="#start_temp">
+    start_temp
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#n_neighbours_2">
-    n_neighbours
+<a class="md-nav__link" href="#annealing_rate">
+    annealing_rate
   </a>
 </li>
 </ul>
@@ -237,7 +237,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../experimental/random_annealing/">
+<a class="md-nav__link" href="../random_annealing/">
         Random Annealing
       </a>
 </li>
@@ -325,13 +325,13 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#n_neighbours_1">
-    n_neighbours
+<a class="md-nav__link" href="#start_temp">
+    start_temp
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#n_neighbours_2">
-    n_neighbours
+<a class="md-nav__link" href="#annealing_rate">
+    annealing_rate
   </a>
 </li>
 </ul>
@@ -347,52 +347,58 @@
 <h1 id="simulated-annealing">Simulated Annealing</h1>
 <h2 id="introduction">Introduction</h2>
 <p>Simulated annealing chooses its next possible position similar to hill climbing, but it accepts 
-worse results with a probability that decreases with time.
-It simulates a temperature that decreases with each iteration, similar to a material cooling down.</p>
+worse results with a probability that decreases with time. It simulates a temperature that decreases with each iteration, similar to a material cooling down.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
-<p>The <strong>simulated annealing</strong> algorithm inherits the methods from the regular hill climbing.
+<p>The <strong>simulated annealing</strong> algorithm inherits the methods to get new positions from hill-climbing and the methods to accept the new position from stochastic-hill-climbing.
 Similar to stochastic hill climbing it may accept a worse position with the goal of
 escaping a local optimum. The <code>start_temp</code> is a factor for the probability of accepting 
-a worse position. This probability decreases over time, because of the ànnealing_rate<code>decreasing the</code>start_temp` over time.</p>
+a worse position. </p>
+<div class="arithmatex">\[
+p = \exp^{-\frac{\text{score}_{normalized}}{\text{temp}}}
+\]</div>
+<p>This probability decreases over time, because of the <code>annealing_rate</code> decreasing the <code>start_temp</code> over time.</p>
+<div class="arithmatex">\[
+\text{start_temp} \leftarrow  \text{start_temp} * \text{annealing_rate}
+\]</div>
 <h2 id="parameters">Parameters</h2>
 <h3 id="epsilon"><code>epsilon</code></h3>
-<p>The "step-size" of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the step size. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space.</p>
+<p>The <em>step-size</em> of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the average step-size, because its proportional to the standard-deviation of the distribution of the hill-climbing-based algorithm. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space. If its value is very low it might not find new positions.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.03</li>
-<li>typical range: 0.01 ... 0.3</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.03</li>
+<li><strong>typical range</strong>: 0.01 ... 0.3</li>
 </ul>
 <hr/>
 <h3 id="distribution"><code>distribution</code></h3>
-<p>The mathematical <code>distribution</code> the algorithm draws samples from.</p>
+<p>The mathematical <code>distribution</code> the algorithm draws samples from. All available distributions are taken from the numpy-package.</p>
 <ul>
-<li>type: string</li>
-<li>default: "normal"</li>
-<li>typical range: "normal, laplace, logistic, gumbel"</li>
+<li><strong>type</strong>: string</li>
+<li><strong>default</strong>: "normal"</li>
+<li><strong>possible values</strong>: "normal", "laplace", "logistic", gumbel"</li>
 </ul>
 <hr/>
 <h3 id="n_neighbours"><code>n_neighbours</code></h3>
-<p>The number of positions the algorithm explores from its current postion before jumping to the best one.</p>
+<p>The number of positions the algorithm explores from its current postion before setting its current position to the best of those neighbour positions. If the value of <code>n_neighbours</code> is large the hill-climbing-based algorithm will take a lot of time to choose the next position to move to, but the choice will probably be a good one. It might be a prudent approach to increase <code>n_neighbours</code> of the search-space has a lot of dimensions, because there are more possible directions to move to.</p>
 <ul>
-<li>type: int</li>
-<li>default: 3</li>
-<li>typical range: 1 ... 10</li>
+<li><strong>type</strong>: int</li>
+<li><strong>default</strong>: 3</li>
+<li><strong>typical range</strong>: 1 ... 10</li>
 </ul>
 <hr/>
-<h3 id="n_neighbours_1"><code>n_neighbours</code></h3>
-<p>The number of positions the algorithm explores from its current postion before jumping to the best one.</p>
+<h3 id="start_temp"><code>start_temp</code></h3>
+<p>The start temperatur determines the probability for the algorithm to jump to a worse position.</p>
 <ul>
-<li>type: int</li>
-<li>default: 3</li>
-<li>typical range: 1 ... 10</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 1</li>
+<li><strong>typical range</strong>: 0.5 ... 1.5</li>
 </ul>
 <hr/>
-<h3 id="n_neighbours_2"><code>n_neighbours</code></h3>
-<p>The number of positions the algorithm explores from its current postion before jumping to the best one.</p>
+<h3 id="annealing_rate"><code>annealing_rate</code></h3>
+<p>Rate at which the temperatur-value of the algorithm decreases. An annealing rate above 1 increases the temperature over time.</p>
 <ul>
-<li>type: int</li>
-<li>default: 3</li>
-<li>typical range: 1 ... 10</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.97</li>
+<li><strong>typical range</strong>: 0.9 ... 0.99</li>
 </ul>
 <hr/>
 </article>
@@ -447,5 +453,8 @@ a worse position. This probability decreases over time, because of the ànnealin
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
 <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

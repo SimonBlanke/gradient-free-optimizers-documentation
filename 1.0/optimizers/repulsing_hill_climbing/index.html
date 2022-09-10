@@ -232,7 +232,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../experimental/random_annealing/">
+<a class="md-nav__link" href="../random_annealing/">
         Random Annealing
       </a>
 </li>
@@ -336,46 +336,48 @@
 <article class="md-content__inner md-typeset">
 <h1 id="repulsing-hill-climbing">Repulsing Hill Climbing</h1>
 <h2 id="introduction">Introduction</h2>
-<p>The <strong>repulsing hill climbing</strong> optimization algorithm improves the normal hill 
-climbing by adding a way to escape local optimia. If no better position is 
-found within the next <code>n_neighbours</code> positions the algorithm will increase 
-<code>epsilon</code> by multiplying the <code>repulsion_factor</code> for the next iteration.</p>
+<p>The <strong>repulsing hill climbing</strong> optimization algorithm inherits from the regular hill-climbing
+algorithm and adds a way to escape local optima by increasing the step-size once to jump away from its current region.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
 <p>Similar to other hill climbing based algorithms the <strong>repulsing hill climbing</strong>
 inherits the methods from the regular hill climbing and adds a functionality to
 escape local optima. The repulsing hill climbing temporally increases <code>epsilon</code>
-to jump out of the current region.</p>
+by multiplying it with the <code>repulsion_factor</code> for the next iteration. </p>
+<div class="arithmatex">\[
+\sigma = \text{dim-size} * \epsilon * \text{repulsion_factor}
+\]</div>
+<p>This way the algorithm <em>jumps</em> away from the current position to explore other regions of the search-space. So the repulsing hill climbing is different from stochastic hill climbing and simulated annealing in that it <strong>always</strong> activates its methods to espace local optima instead of activating them with a certain <strong>probability</strong>.</p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="epsilon"><code>epsilon</code></h3>
-<p>The "step-size" of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the step size. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space.</p>
+<p>The <em>step-size</em> of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the average step-size, because its proportional to the standard-deviation of the distribution of the hill-climbing-based algorithm. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space. If its value is very low it might not find new positions.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.03</li>
-<li>typical range: 0.01 ... 0.3</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.03</li>
+<li><strong>typical range</strong>: 0.01 ... 0.3</li>
 </ul>
 <hr/>
 <h3 id="distribution"><code>distribution</code></h3>
-<p>The mathematical <code>distribution</code> the algorithm draws samples from.</p>
+<p>The mathematical <code>distribution</code> the algorithm draws samples from. All available distributions are taken from the numpy-package.</p>
 <ul>
-<li>type: string</li>
-<li>default: "normal"</li>
-<li>typical range: "normal, laplace, logistic, gumbel"</li>
+<li><strong>type</strong>: string</li>
+<li><strong>default</strong>: "normal"</li>
+<li><strong>possible values</strong>: "normal", "laplace", "logistic", gumbel"</li>
 </ul>
 <hr/>
 <h3 id="n_neighbours"><code>n_neighbours</code></h3>
-<p>The number of positions the algorithm explores from its current postion before jumping to the best one.</p>
+<p>The number of positions the algorithm explores from its current postion before setting its current position to the best of those neighbour positions. If the value of <code>n_neighbours</code> is large the hill-climbing-based algorithm will take a lot of time to choose the next position to move to, but the choice will probably be a good one. It might be a prudent approach to increase <code>n_neighbours</code> of the search-space has a lot of dimensions, because there are more possible directions to move to.</p>
 <ul>
-<li>type: int</li>
-<li>default: 3</li>
-<li>typical range: 1 ... 10</li>
+<li><strong>type</strong>: int</li>
+<li><strong>default</strong>: 3</li>
+<li><strong>typical range</strong>: 1 ... 10</li>
 </ul>
 <hr/>
 <h3 id="repulsion_factor"><code>repulsion_factor</code></h3>
-<p>If the algorithm does not find a better position the repulsion factor increases epsilon for the next jump.</p>
+<p>If the algorithm does not find a better position the repulsion factor increases epsilon for the next iteration by the <code>repulsion_factor</code>. This way the algorithm escapes the region that does not offer better positions.</p>
 <ul>
-<li>type: float</li>
-<li>default: 5</li>
-<li>typical range: 2 ... 10</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 5</li>
+<li><strong>typical range</strong>: 2 ... 10</li>
 </ul>
 <hr/>
 </article>
@@ -430,5 +432,8 @@ to jump out of the current region.</p>
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
 <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

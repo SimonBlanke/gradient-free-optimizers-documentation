@@ -232,7 +232,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../experimental/random_annealing/">
+<a class="md-nav__link" href="../random_annealing/">
         Random Annealing
       </a>
 </li>
@@ -336,46 +336,88 @@
 <article class="md-content__inner md-typeset">
 <h1 id="downhill-simplex-optimizer">Downhill Simplex Optimizer</h1>
 <h2 id="introduction">Introduction</h2>
-<p>The downhill simplex optimizer works by grouping <code>number of dimensions + 1</code>-positions into a simplex.
-The search space is explored by reflecting, expanding, contracting or shrinking the simplex via
+<p>The downhill simplex optimizer works by grouping <code>number of dimensions + 1</code>-positions into a simplex, which can explore the search-space by changing shape.
+The simplex changes shape by reflecting, expanding, contracting or shrinking via
 the <code>alpha</code>, <code>gamma</code>, <code>beta</code> or <code>sigma</code> parameters.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
 <p>The <strong>downhill simplex</strong> algorithm works in a completly different way from the other local
 hill climbing based optimizers. It is much more complex, because there are 
-reflecting-, expanding-, contracting- and shrinking-steps for the iteration 
-(before new score is known) and the evaluation (after new score is known). This leads
-to a bigger and more complex source code than the hill climbing based algorithms.</p>
+reflecting-, expanding-, contracting- and shrinking-steps for each the iteration and the evaluation. This leads to a bigger and more complex source code than the hill climbing based algorithms.</p>
+<p>In this implementation the downhill simplex algorithm has some similarities to population-based algorithms. It needs at least <code>number of dimensions + 1</code> initial positions to form a simplex in the search-space and the movement of the positions in the simplex are affected by each other.</p>
+<ol>
+<li>Choose <code>number of dimensions + 1</code> positions to build a simplex</li>
+<li>Sort simplex positions by their score:<ul>
+<li><span class="arithmatex">\(x_0\)</span> is the best position</li>
+<li><span class="arithmatex">\(x_{N-1}\)</span> is the second worst</li>
+<li><span class="arithmatex">\(x_N\)</span> is the worst</li>
+<li>...</li>
+</ul>
+</li>
+<li>Calculate the center position <span class="arithmatex">\(m\)</span> of all but the worst position<ul>
+<li><span class="arithmatex">\(m = \frac{1}{N}\sum^{N-1}_{i=0}x_i\)</span></li>
+</ul>
+</li>
+<li>Reflect (<span class="arithmatex">\(\alpha\)</span>) the worst position at the center position<ul>
+<li><span class="arithmatex">\(r = m + \alpha (m - x_N)\)</span></li>
+</ul>
+</li>
+<li>If the reflected position is better than <span class="arithmatex">\(x_0\)</span>:<ul>
+<li><span class="arithmatex">\(e=m+\gamma(m-x_N)\)</span></li>
+<li><span class="arithmatex">\(p\)</span> is the better position of <span class="arithmatex">\(e\)</span> and <span class="arithmatex">\(r\)</span></li>
+<li><span class="arithmatex">\(x_N \leftarrow p\)</span></li>
+</ul>
+</li>
+<li>If the reflected position is better than <span class="arithmatex">\(x_{N-1}\)</span>:<ul>
+<li><span class="arithmatex">\(x_N \leftarrow r\)</span></li>
+<li>Go to step 2</li>
+</ul>
+</li>
+<li>If <span class="arithmatex">\(h\)</span> is the better position of <span class="arithmatex">\(x_N\)</span> and <span class="arithmatex">\(r\)</span>:<ul>
+<li><span class="arithmatex">\(c=h+\beta(m-h)\)</span></li>
+</ul>
+</li>
+<li>If c is better than <span class="arithmatex">\(x_N\)</span>:<ul>
+<li><span class="arithmatex">\(x_N \leftarrow c\)</span></li>
+</ul>
+</li>
+<li>Shrink the simplex<ul>
+<li>For each dimension <span class="arithmatex">\((i \in {1, ..., N})\)</span></li>
+<li><span class="arithmatex">\(x_i \leftarrow x_i + \sigma(x_o - x_i)\)</span></li>
+</ul>
+</li>
+<li>Go to step 2</li>
+</ol>
 <h2 id="parameters">Parameters</h2>
 <h3 id="alpha"><code>alpha</code></h3>
-<p>Reflection parameter of the simplex algorithm.</p>
+<p>The reflection parameter of the simplex algorithm.</p>
 <ul>
-<li>type: float</li>
-<li>default: 1</li>
-<li>typical range: 0.5 ... 2</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 1</li>
+<li><strong>typical range</strong>: 0.5 ... 2</li>
 </ul>
 <hr/>
 <h3 id="gamma"><code>gamma</code></h3>
-<p>Expansion parameter of the simplex algorithm.</p>
+<p>The expansion parameter of the simplex algorithm.</p>
 <ul>
-<li>type: float</li>
-<li>default: 2</li>
-<li>typical range: 0.5 ... 5</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 2</li>
+<li><strong>typical range</strong>: 0.5 ... 5</li>
 </ul>
 <hr/>
 <h3 id="beta"><code>beta</code></h3>
-<p>Contraction parameter of the simplex algorithm.</p>
+<p>The contraction parameter of the simplex algorithm.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.5</li>
-<li>typical range: 0.25 ... 3</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.5</li>
+<li><strong>typical range</strong>: 0.25 ... 3</li>
 </ul>
 <hr/>
 <h3 id="sigma"><code>sigma</code></h3>
-<p>Shrinking parameter of the simplex algorithm.</p>
+<p>The shrinking parameter of the simplex algorithm.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.5</li>
-<li>typical range: 0.25 ... 3</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.5</li>
+<li><strong>typical range</strong>: 0.25 ... 3</li>
 </ul>
 <hr/>
 </article>
@@ -430,5 +472,8 @@ to a bigger and more complex source code than the hill climbing based algorithms
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
 <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>

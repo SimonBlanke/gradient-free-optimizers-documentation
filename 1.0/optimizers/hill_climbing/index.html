@@ -227,7 +227,7 @@
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../experimental/random_annealing/">
+<a class="md-nav__link" href="../random_annealing/">
         Random Annealing
       </a>
 </li>
@@ -326,32 +326,42 @@
 <article class="md-content__inner md-typeset">
 <h1 id="hill-climbing">Hill Climbing</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Hill climbing is a very basic optimization technique, that explores the search space only localy. It starts at an initial point, which is often chosen randomly and continues to move to positions with a better solution. It has no method against getting stuck in local optima.</p>
+<p>Hill climbing is a very basic optimization technique, that explores the search space only localy. It starts at an initial point, which is often chosen randomly and continues to move to positions within its neighbourhood with a better solution. It has no method against getting stuck in local optima.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
-<p>The hill climbing algorithm is saving the current position in the search space and finds a new position by selecting a random position around it. This is done with a gaussian <code>distribution</code>. So if the position is further away the probability of getting selected is lower, but never zero. This makes the hill climbing more heuristic and a bit more adaptable. The standard deviation of the gaussian distribution in each dimension is dependend on the size of the search space in the corresponding dimension. This improves the exploration performance if the sizes of the search space dimensions are differing from each other.</p>
+<p>The hill climbing algorithm is saving the current position from the search space and finds new positions by sampling random positions around it with a gaussian <code>distribution</code>. This is done with a gaussian <code>distribution</code>. So if the position is further away the probability of getting selected is lower, but never zero. This makes the hill climbing more heuristic and a bit more adaptable. The positions found around its current positions are called <em>neighbours</em>. The hill climbing will sample and evaluate <code>n_neighbours</code> before moving its current position to the best of those neighbour. After moving the algorithm restarts sampling neighbours from its <code>distribution</code> around its new current position.</p>
+<p>If the <code>distribution</code> is "normal" (default) the hill climbing algorithm will sample its neighbours with the normal distribution:</p>
+<div class="arithmatex">\[
+f(x) = \frac{1}{\sigma\sqrt{2\pi}} 
+  \exp^{\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{\!2}\,\right)}
+\]</div>
+<p>In this equation <span class="arithmatex">\(\mu\)</span> is the current position in the search space and <span class="arithmatex">\(\sigma\)</span> is calculated with the size of the search space in each dimension and the epsilon.</p>
+<div class="arithmatex">\[
+\sigma = \text{dim-size} * \epsilon
+\]</div>
+<p>So the standard deviation of the gaussian distribution in each dimension is dependend on the size of the search space in the corresponding dimension. This improves the exploration if the sizes of the search space dimensions are differing from each other.</p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="epsilon"><code>epsilon</code></h3>
-<p>The "step-size" of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the step size. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space.</p>
+<p>The <em>step-size</em> of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the average step-size, because its proportional to the standard-deviation of the distribution of the hill-climbing-based algorithm. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space. If its value is very low it might not find new positions.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.03</li>
-<li>typical range: 0.01 ... 0.3</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.03</li>
+<li><strong>typical range</strong>: 0.01 ... 0.3</li>
 </ul>
 <hr/>
 <h3 id="distribution"><code>distribution</code></h3>
-<p>The mathematical <code>distribution</code> the algorithm draws samples from.</p>
+<p>The mathematical <code>distribution</code> the algorithm draws samples from. All available distributions are taken from the numpy-package.</p>
 <ul>
-<li>type: string</li>
-<li>default: "normal"</li>
-<li>typical range: "normal, laplace, logistic, gumbel"</li>
+<li><strong>type</strong>: string</li>
+<li><strong>default</strong>: "normal"</li>
+<li><strong>possible values</strong>: "normal", "laplace", "logistic", gumbel"</li>
 </ul>
 <hr/>
 <h3 id="n_neighbours"><code>n_neighbours</code></h3>
-<p>The number of positions the algorithm explores from its current postion before jumping to the best one.</p>
+<p>The number of positions the algorithm explores from its current postion before setting its current position to the best of those neighbour positions. If the value of <code>n_neighbours</code> is large the hill-climbing-based algorithm will take a lot of time to choose the next position to move to, but the choice will probably be a good one. It might be a prudent approach to increase <code>n_neighbours</code> of the search-space has a lot of dimensions, because there are more possible directions to move to.</p>
 <ul>
-<li>type: int</li>
-<li>default: 3</li>
-<li>typical range: 1 ... 10</li>
+<li><strong>type</strong>: int</li>
+<li><strong>default</strong>: 3</li>
+<li><strong>typical range</strong>: 1 ... 10</li>
 </ul>
 <hr/>
 </article>
@@ -406,5 +416,8 @@
 </div>
 <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
 <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "width": "100%", "height": "auto", "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom"});})</script></body>
 </html>
