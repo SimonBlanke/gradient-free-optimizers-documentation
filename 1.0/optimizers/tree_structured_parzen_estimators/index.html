@@ -339,25 +339,25 @@ the training data from the best and worst positions to calculate the expected im
 <h3 id="gamma_tpe"><code>gamma_tpe</code></h3>
 <p>Separates the explored positions into good and bad.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.2</li>
-<li>typical range: 0.05 ... 0.75</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.2</li>
+<li><strong>typical range</strong>: 0.05 ... 0.75</li>
 </ul>
 <hr/>
 <h3 id="warm_start_smbo"><code>warm_start_smbo</code></h3>
 <p>Dataframe that contains the search data of a previous optimization run.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.03</li>
-<li>typical range: 0.01 ... 0.3</li>
+<li><strong>type</strong>: pandas dataframe, None</li>
+<li><strong>default</strong>: None</li>
+<li><strong>possible values</strong>: -</li>
 </ul>
 <hr/>
 <h3 id="rand_rest_p"><code>rand_rest_p</code></h3>
-<p>Probability for the optimization algorithm to jump to a random position in an iteration step.</p>
+<p>Probability for the optimization algorithm to jump to a random position in an iteration step. It is set to 0 per default. The idea of this parameter is to give the possibility to inject randomness into algorithms that don't normally support it.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0</li>
-<li>typical range: 0.01 ... 0.1</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0</li>
+<li><strong>typical range</strong>: 0.01 ... 0.1</li>
 </ul>
 <hr/>
 </article>

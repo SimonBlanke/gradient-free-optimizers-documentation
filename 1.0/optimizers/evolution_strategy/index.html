@@ -347,33 +347,33 @@ are removed to preserve the number of individuals in the population.</p>
 <h3 id="population"><code>population</code></h3>
 <p>Size of the population for population-based optimization algorithms.</p>
 <ul>
-<li>type: int</li>
-<li>default: 10</li>
-<li>typical range: 4 ... 25</li>
+<li><strong>type</strong>: int</li>
+<li><strong>default</strong>: 10</li>
+<li><strong>typical range</strong>: 4 ... 25</li>
 </ul>
 <hr/>
 <h3 id="mutation_rate"><code>mutation_rate</code></h3>
 <p>Probability of an individual in the population to perform an hill climbing step.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.7</li>
-<li>typical range: 0.1 ... 0.9</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.7</li>
+<li><strong>typical range</strong>: 0.1 ... 0.9</li>
 </ul>
 <hr/>
 <h3 id="crossover_rate"><code>crossover_rate</code></h3>
 <p>Probability of an individual to perform a crossover with the best individual in the population.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.3</li>
-<li>typical range: 0.1 ... 0.9</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.3</li>
+<li><strong>typical range</strong>: 0.1 ... 0.9</li>
 </ul>
 <hr/>
 <h3 id="rand_rest_p"><code>rand_rest_p</code></h3>
-<p>Probability for the optimization algorithm to jump to a random position in an iteration step.</p>
+<p>Probability for the optimization algorithm to jump to a random position in an iteration step. It is set to 0 per default. The idea of this parameter is to give the possibility to inject randomness into algorithms that don't normally support it.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0</li>
-<li>typical range: 0.01 ... 0.1</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0</li>
+<li><strong>typical range</strong>: 0.01 ... 0.1</li>
 </ul>
 <hr/>
 </article>

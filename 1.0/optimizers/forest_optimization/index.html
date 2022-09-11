@@ -350,33 +350,33 @@ standard deviation from the impurity of the trees in the ensemble.</p>
 <p>The access to the surrogate model class. Example surrogate
 model classes can be found in a separate repository.</p>
 <ul>
-<li>type: string</li>
-<li>default: extra_tree</li>
-<li>typical range: "extra_tree, random_forest, gradient_boost"</li>
+<li><strong>type</strong>: string</li>
+<li><strong>default</strong>: extra_tree</li>
+<li><strong>possible values</strong>: "extra_tree, random_forest, gradient_boost"</li>
 </ul>
 <hr/>
 <h3 id="xi"><code>xi</code></h3>
 <p>Parameter for the expected uncertainty of the estimation.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.3</li>
-<li>typical range: 0.1 ... 0.9</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.3</li>
+<li><strong>typical range</strong>: 0.1 ... 0.9</li>
 </ul>
 <hr/>
 <h3 id="warm_start_smbo"><code>warm_start_smbo</code></h3>
 <p>Dataframe that contains the search data of a previous optimization run.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.03</li>
-<li>typical range: 0.01 ... 0.3</li>
+<li><strong>type</strong>: pandas dataframe, None</li>
+<li><strong>default</strong>: None</li>
+<li><strong>possible values</strong>: -</li>
 </ul>
 <hr/>
 <h3 id="rand_rest_p"><code>rand_rest_p</code></h3>
-<p>Probability for the optimization algorithm to jump to a random position in an iteration step.</p>
+<p>Probability for the optimization algorithm to jump to a random position in an iteration step. It is set to 0 per default. The idea of this parameter is to give the possibility to inject randomness into algorithms that don't normally support it.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0</li>
-<li>typical range: 0.01 ... 0.1</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0</li>
+<li><strong>typical range</strong>: 0.01 ... 0.1</li>
 </ul>
 <hr/>
 </article>

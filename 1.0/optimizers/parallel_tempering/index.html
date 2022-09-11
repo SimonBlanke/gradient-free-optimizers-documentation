@@ -326,7 +326,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="parallel-tempering">Parallel Tempering</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Parallel Tempering initializes multiple simulated annealing searches with different 
+<p><strong>Parallel Tempering</strong> initializes multiple simulated annealing searches with different 
 temperatures and chooses to swap those temperatures with a probability based on 
 its temperature and difference of current scores.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
@@ -334,30 +334,34 @@ its temperature and difference of current scores.</p>
 of the simulated annealing optimizer class. Each of those receives a random starting temperature.
 The algorithm calculates the probability of swapping temperatures
 for every combination of annealer instances. </p>
+<div class="arithmatex">\[
+p = \min \left( 1, exp^{(\text{score}_i-\text{score}_j)(\frac{1}{T_i} - \frac{1}{T_j})} \right)
+\]</div>
+<p>The indices <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span> correspond to the two simulated annealing optimizers.</p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="population"><code>population</code></h3>
 <p>Size of the population for population-based optimization algorithms.</p>
 <ul>
-<li>type: int</li>
-<li>default: 10</li>
-<li>typical range: 4 ... 25</li>
+<li><strong>type</strong>: int</li>
+<li><strong>default</strong>: 10</li>
+<li><strong>typical range</strong>: 4 ... 25</li>
 </ul>
 <hr/>
 <h3 id="n_iter_swap"><code>n_iter_swap</code></h3>
 <p>The number of iterations the algorithm performs before switching 
 temperatures of the individual optimizers in the population.</p>
 <ul>
-<li>type: int</li>
-<li>default: 10</li>
-<li>typical range: 5 ... 50</li>
+<li><strong>type</strong>: int</li>
+<li><strong>default</strong>: 10</li>
+<li><strong>typical range</strong>: 5 ... 50</li>
 </ul>
 <hr/>
 <h3 id="rand_rest_p"><code>rand_rest_p</code></h3>
-<p>Probability for the optimization algorithm to jump to a random position in an iteration step.</p>
+<p>Probability for the optimization algorithm to jump to a random position in an iteration step. It is set to 0 per default. The idea of this parameter is to give the possibility to inject randomness into algorithms that don't normally support it.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0</li>
-<li>typical range: 0.01 ... 0.1</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0</li>
+<li><strong>typical range</strong>: 0.01 ... 0.1</li>
 </ul>
 <hr/>
 </article>

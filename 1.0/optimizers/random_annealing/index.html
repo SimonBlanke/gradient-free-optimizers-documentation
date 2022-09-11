@@ -346,10 +346,17 @@
 <article class="md-content__inner md-typeset">
 <h1 id="random-annealing">Random Annealing</h1>
 <h2 id="introduction">Introduction</h2>
-<p>An algorithm that chooses a new position within a large hypersphere around the current position. 
-This hypersphere gets smaller over time.</p>
+<p>The <strong>random annealing</strong> algorithm is based on hill climbing and derived on the regular simulated annealing algorithm. It takes the idea of a temperatur and annealing to change the step-size over time.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
-<p>...</p>
+<p>It also has a <code>start_temp</code> and an <code>annealing_rate</code> but uses them differently. The <code>start_temp</code> gets changed by the <code>annealing_rate</code> similarly to simulated annealing.</p>
+<div class="arithmatex">\[
+\text{start_temp} \leftarrow  \text{start_temp} * \text{annealing_rate}
+\]</div>
+<p>In the <strong>random annealing</strong> algorithm the <code>start_temp</code> acts as a factor that gets multiplied with <code>epsilon</code> to change the step-size of this algorithm over time. </p>
+<div class="arithmatex">\[
+\epsilon' = \epsilon * \text{start_temp}
+\]</div>
+<p>The idea is, that you want the algorithm to explore the search-space in the beginning of the optimization run and concentrate more on fine tuning the best results locally towards the end.</p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="epsilon"><code>epsilon</code></h3>
 <p>The <em>step-size</em> of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the average step-size, because its proportional to the standard-deviation of the distribution of the hill-climbing-based algorithm. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space. If its value is very low it might not find new positions.</p>
@@ -376,7 +383,7 @@ This hypersphere gets smaller over time.</p>
 </ul>
 <hr/>
 <h3 id="start_temp"><code>start_temp</code></h3>
-<p>The start temperatur determines the probability for the algorithm to jump to a worse position.</p>
+<p>The start temperatur is set to the given value at the start of the optimization run and gets changed by the <code>annealing_rate</code> over time. This <code>start_temp</code> is multiplied with <code>epsilon</code> to change the step-size of this hill-climbing-based algorithm over time. </p>
 <ul>
 <li><strong>type</strong>: float</li>
 <li><strong>default</strong>: 1</li>

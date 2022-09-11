@@ -347,54 +347,68 @@
 <h1 id="particle-swarm-optimization">Particle Swarm Optimization</h1>
 <h2 id="introduction">Introduction</h2>
 <p>Particle swarm optimization works by initializing a number of positions in the search space,
-which move according to their own ineratia, the attraction to their own known best positions
+which move according to their own inertia, the attraction to their own known best positions
 and the global best position.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
 <p>The particle swarm optimizer initializes multiple particle classes, which inherit from
 the hill-climbing class. In the current version all movement-calculations are contained in
-the particle class. Particles have a velocity, which they maintain even without attraction
-to other particles via <code>cognitive_weight</code> or <code>social_weight</code>.</p>
+the particle class. Particles have a velocity, which they maintain because of their <code>inertia</code> even without attraction to other particles via <code>cognitive_weight</code> or <code>social_weight</code>. </p>
+<p>The particles use the following parameters and vectors to move through the search space:</p>
+<ul>
+<li><span class="arithmatex">\(\omega\)</span> <strong>=&gt;</strong> <code>inertia</code></li>
+<li><span class="arithmatex">\(c_k\)</span> <strong>=&gt;</strong> <code>cognitive_weight</code></li>
+<li><span class="arithmatex">\(c_s\)</span> <strong>=&gt;</strong> <code>social_weight</code></li>
+<li><span class="arithmatex">\(r_1\)</span> <span class="arithmatex">\(r_2\)</span> <strong>=&gt;</strong> random floats between 0 ... 1</li>
+<li><span class="arithmatex">\(p_n\)</span> <strong>=&gt;</strong> current position of the particle</li>
+<li><span class="arithmatex">\(p_{best}\)</span> <strong>=&gt;</strong> best position of the particle</li>
+<li><span class="arithmatex">\(g_{best}\)</span> <strong>=&gt;</strong> best position of all particles</li>
+</ul>
+<p>The velocity of a particle is calculated by the following equation:</p>
+<div class="arithmatex">\[
+v_{n+1} = \omega \cdot v_n + c_k \cdot r_1 \cdot (p_{best}-p_n) + c_s \cdot r_2 \cdot (g_{best} - p_n)
+\]</div>
+<p>Since the particle is always moving for the same single timeframe we can just add the velocity and the current position of the particle to get the new position.</p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="population"><code>population</code></h3>
 <p>Size of the population for population-based optimization algorithms.</p>
 <ul>
-<li>type: int</li>
-<li>default: 10</li>
-<li>typical range: 4 ... 25</li>
+<li><strong>type</strong>: int</li>
+<li><strong>default</strong>: 10</li>
+<li><strong>typical range</strong>: 4 ... 25</li>
 </ul>
 <hr/>
 <h3 id="inertia"><code>inertia</code></h3>
 <p>The inertia of the movement of the individual optimizers in the population.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.5</li>
-<li>typical range: 0.25 ... 0.75</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.5</li>
+<li><strong>typical range</strong>: 0.25 ... 0.75</li>
 </ul>
 <hr/>
 <h3 id="cognitive_weight"><code>cognitive_weight</code></h3>
 <p>A factor of the movement towards the personal best position 
 of the individual optimizers in the population.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.5</li>
-<li>typical range: 0.25 ... 0.75</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.5</li>
+<li><strong>typical range</strong>: 0.25 ... 0.75</li>
 </ul>
 <hr/>
 <h3 id="social_weight"><code>social_weight</code></h3>
 <p>A factor of the movement towards the global best 
 position of the individual optimizers in the population.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0.5</li>
-<li>typical range: 0.25 ... 0.75</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.5</li>
+<li><strong>typical range</strong>: 0.25 ... 0.75</li>
 </ul>
 <hr/>
 <h3 id="rand_rest_p"><code>rand_rest_p</code></h3>
-<p>Probability for the optimization algorithm to jump to a random position in an iteration step.</p>
+<p>Probability for the optimization algorithm to jump to a random position in an iteration step. It is set to 0 per default. The idea of this parameter is to give the possibility to inject randomness into algorithms that don't normally support it.</p>
 <ul>
-<li>type: float</li>
-<li>default: 0</li>
-<li>typical range: 0.01 ... 0.1</li>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0</li>
+<li><strong>typical range</strong>: 0.01 ... 0.1</li>
 </ul>
 <hr/>
 </article>
