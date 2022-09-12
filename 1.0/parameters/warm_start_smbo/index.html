@@ -250,7 +250,47 @@
 <article class="md-content__inner md-typeset">
 <h1>Warm start smbo</h1>
 <h3 id="warm_start_smbo"><code>warm_start_smbo</code></h3>
-<p>Dataframe that contains the search data of a previous optimization run.</p>
+<p>The <code>warm_start_smbo</code>-parameter is a pandas dataframe that contains search-data with the results from a previous optimization run. The dataframe containing the search-data could look like this:</p>
+<table>
+<thead>
+<tr>
+<th>x1</th>
+<th>x2</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>15</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>12</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Where the corresponding search-space would look like this:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">search_space</span> <span class="o">=</span> <span class="p">{</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>  <span class="s2">"x1"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>  <span class="s2">"x2"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>Before passing the search-data to the optimizer make sure, that the columns match the search-space of the new optimization run. So you could not add another dimension ("x3") to the search-space and expect the warm-start to work. The dimensionality of the optimization must be preserved and fit the problem.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">opt</span> <span class="o">=</span> <span class="n">BayesianOptimization</span><span class="p">(</span><span class="n">warm_start_smbo</span><span class="o">=</span><span class="n">search_data</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li><strong>type</strong>: pandas dataframe, None</li>
 <li><strong>default</strong>: None</li>

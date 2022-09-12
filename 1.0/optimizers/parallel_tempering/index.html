@@ -340,7 +340,7 @@ p = \min \left( 1, exp^{(\text{score}_i-\text{score}_j)(\frac{1}{T_i} - \frac{1}
 <p>The indices <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span> correspond to the two simulated annealing optimizers.</p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="population"><code>population</code></h3>
-<p>Size of the population for population-based optimization algorithms.</p>
+<p>Size of the population for population-based optimization algorithms. A member of the population is called single optimizer, individual or particle depending on the type of algorithm. Each member of the population is a separate optimizer class with information about the positions and scores of the optimizer and all methods to perform the iteration and evaluation steps.</p>
 <ul>
 <li><strong>type</strong>: int</li>
 <li><strong>default</strong>: 10</li>

@@ -236,13 +236,23 @@
 <nav aria-label="Parameters" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#xi">
+    xi
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#gpr">
     gpr
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#xi">
-    xi
+<a class="md-nav__link" href="#max_sample_size">
+    max_sample_size
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sampling">
+    sampling
   </a>
 </li>
 <li class="md-nav__item">
@@ -305,13 +315,23 @@
 <nav aria-label="Parameters" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#xi">
+    xi
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#gpr">
     gpr
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#xi">
-    xi
+<a class="md-nav__link" href="#max_sample_size">
+    max_sample_size
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sampling">
+    sampling
   </a>
 </li>
 <li class="md-nav__item">
@@ -348,26 +368,119 @@ in addition to the prediction (or mean), both of which are required to
 compute the acquisition function.
 The position of the best predicted score
 is evaluated next. The selected position and its true score is then collected, 
-restarting the cycle.</p>
-<h2 id="parameters">Parameters</h2>
-<h3 id="gpr"><code>gpr</code></h3>
-<p>The access to the surrogate model class. </p>
+restarting the cycle. The acquisition function used in this algorithm is the expected improvement.  The expected improvement is calculated by the following equation:</p>
+<div class="arithmatex">\[
+\text{expected improvement} = ( \mu - y_{sample, max} - \xi ) \cdot \varphi(Z) + \sigma \cdot \Phi(Z)
+\]</div>
+<p>where:</p>
+<div class="arithmatex">\[
+\mu, \sigma = \text{surrogate-model.predict}(...)
+\]</div>
+<p>and:</p>
 <ul>
-<li><strong>type</strong>: class</li>
-<li><strong>default</strong>: -</li>
-<li><strong>possible values</strong>: -</li>
+<li><span class="arithmatex">\(y_{sample, max}\)</span> <strong>=&gt;</strong> best known score</li>
+<li><span class="arithmatex">\(\xi\)</span> <strong>=&gt;</strong> xi-parameter</li>
+<li><span class="arithmatex">\(\varphi\)</span> <strong>=&gt;</strong> Probability density function</li>
+<li><span class="arithmatex">\(\Phi\)</span> <strong>=&gt;</strong> Cumulative distribution function</li>
 </ul>
-<hr/>
+<p>The surrogate model used in bayesian optimization is the gassian process regressor. A crucial property of this model is, that it returns the uncertainty of the prediction <span class="arithmatex">\(\sigma\)</span> together with the predicted value <span class="arithmatex">\(\mu\)</span>.</p>
+<h2 id="parameters">Parameters</h2>
 <h3 id="xi"><code>xi</code></h3>
-<p>Parameter for the expected uncertainty of the estimation.</p>
+<p>Parameter for the expected uncertainty of the estimation. It is a parameter that belongs to the expected-improvement acquisition-function.</p>
 <ul>
 <li><strong>type</strong>: float</li>
 <li><strong>default</strong>: 0.3</li>
 <li><strong>typical range</strong>: 0.1 ... 0.9</li>
 </ul>
 <hr/>
+<h3 id="gpr"><code>gpr</code></h3>
+<p>The access to the surrogate model. To pass a surrogate model it must be similar to the following code: </p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">class</span> <span class="nc">GPR</span><span class="p">:</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">gpr</span> <span class="o">=</span> <span class="n">GaussianProcessRegressor</span><span class="p">()</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">gpr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">return_std</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gpr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">return_std</span><span class="o">=</span><span class="n">return_std</span><span class="p">)</span>
+</code></pre></div>
+<p>The <code>predict</code>-method returns only <span class="arithmatex">\(\mu\)</span> if <code>return_std=False</code> and returns <span class="arithmatex">\(\mu\)</span> and <span class="arithmatex">\(\sigma\)</span> if <code>return_std=True</code>. Note that you have to pass the instantiated class to the <code>gpr</code>-parameter:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">surrogate_model</span> <span class="o">=</span> <span class="n">GPR</span><span class="p">()</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">opt</span><span class="o">=</span><span class="n">BayesianOptimizer</span><span class="p">(</span><span class="n">gpr</span><span class="o">=</span><span class="n">surrogate_model</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><strong>type</strong>: class</li>
+<li><strong>default</strong>: -</li>
+<li><strong>possible values</strong>: -</li>
+</ul>
+<hr/>
+<h3 id="max_sample_size"><code>max_sample_size</code></h3>
+<p>The <code>max_sample_size</code> is a first pass of randomly sampling, before all possible positions are generated for the sequence-model-based optimization. It samples the search space directly and takes effect if the search-space is very large:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">search_data</span> <span class="o">=</span> <span class="p">{</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>  <span class="s2">"x1"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>  <span class="s2">"x2"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>  <span class="s2">"x3"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>  <span class="s2">"x4"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">}</span>
+</code></pre></div>
+<p>The <code>max_sample_size</code>-parameter is necessary to avoid a memory overload from generating all possible positions from the search-space. The search-space above corresponds to a list of <span class="arithmatex">\(100000^4 = 100000000000000000000\)</span> numpy arrays. This memory overload is expected for a sequence-model-based optimization algorithm, because the surrogate model has the job make a prediction for every position in the search-space to calculate the acquisition-function. The <code>max_sample_size</code>-parameter was introduced to provide a better out-of-the-box experience if using smb-optimizers.</p>
+<ul>
+<li><strong>type</strong>: int</li>
+<li><strong>default</strong>: 10000000</li>
+<li><strong>typical range</strong>: 1000000 ... 100000000</li>
+</ul>
+<hr/>
+<h3 id="sampling"><code>sampling</code></h3>
+<p>The <code>sampling</code>-parameter is a second pass of randomly sampling. It samples from the list of all possible positions (not directly from the search-space). This might be necessary, because the <code>predict</code>-method of the surrogate model could overload the memory. </p>
+<ul>
+<li><strong>type</strong>: dict</li>
+<li><strong>default</strong>: {'random': 1000000}</li>
+<li><strong>typical range</strong>: -</li>
+</ul>
+<hr/>
 <h3 id="warm_start_smbo"><code>warm_start_smbo</code></h3>
-<p>Dataframe that contains the search data of a previous optimization run.</p>
+<p>The <code>warm_start_smbo</code>-parameter is a pandas dataframe that contains search-data with the results from a previous optimization run. The dataframe containing the search-data could look like this:</p>
+<table>
+<thead>
+<tr>
+<th>x1</th>
+<th>x2</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>15</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>12</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Where the corresponding search-space would look like this:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">search_space</span> <span class="o">=</span> <span class="p">{</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="s2">"x1"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>  <span class="s2">"x2"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>Before passing the search-data to the optimizer make sure, that the columns match the search-space of the new optimization run. So you could not add another dimension ("x3") to the search-space and expect the warm-start to work. The dimensionality of the optimization must be preserved and fit the problem.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">opt</span> <span class="o">=</span> <span class="n">BayesianOptimization</span><span class="p">(</span><span class="n">warm_start_smbo</span><span class="o">=</span><span class="n">search_data</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li><strong>type</strong>: pandas dataframe, None</li>
 <li><strong>default</strong>: None</li>

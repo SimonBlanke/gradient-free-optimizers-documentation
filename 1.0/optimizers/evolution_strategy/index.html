@@ -340,12 +340,24 @@
 number of generations without transforming them into an array of bits 
 (like genetic algorithms) but uses the real values of the positions.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
-<p>The mutation part of the evolution strategy optimizer is a regular hill climbing algorithm.
-The crossover works by combining the best positions to get new ones. The worst positions 
-are removed to preserve the number of individuals in the population.</p>
+<p>The mutation part of the evolution strategy optimizer is a regular hill climbing iteration step. The idea of a mutation corresponds to small changes of the current position of the optimizer. 
+The crossover works by randomly combining the positions of some of the two best individuals in the population to get a new position. The individuals with the worst scores are removed to preserve the number of individuals in the <code>population</code>.</p>
+<p>The <code>mutation_rate</code> and <code>crossover_rate</code> are weights that correspond to the probability of choosing one method. The algorithm decides what method to use in the following way:</p>
+<div class="arithmatex">\[
+R = \text{random-float} (0 ... \text{total-rate})
+\]</div>
+<p>where:</p>
+<div class="arithmatex">\[
+\text{total-rate} = \text{mutation-rate} + \text{crossover-rate}
+\]</div>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">if</span> <span class="n">R</span> <span class="o">&lt;=</span> <span class="n">mutation</span><span class="o">-</span><span class="n">rate</span><span class="p">:</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="n">do</span> <span class="n">mutation</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">else</span><span class="p">:</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="n">do</span> <span class="n">crossover</span>
+</code></pre></div>
 <h2 id="parameters">Parameters</h2>
 <h3 id="population"><code>population</code></h3>
-<p>Size of the population for population-based optimization algorithms.</p>
+<p>Size of the population for population-based optimization algorithms. A member of the population is called single optimizer, individual or particle depending on the type of algorithm. Each member of the population is a separate optimizer class with information about the positions and scores of the optimizer and all methods to perform the iteration and evaluation steps.</p>
 <ul>
 <li><strong>type</strong>: int</li>
 <li><strong>default</strong>: 10</li>

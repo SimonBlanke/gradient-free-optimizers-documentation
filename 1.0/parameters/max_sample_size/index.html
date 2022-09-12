@@ -250,7 +250,15 @@
 <article class="md-content__inner md-typeset">
 <h1>Max sample size</h1>
 <h3 id="max_sample_size"><code>max_sample_size</code></h3>
-<p>Parameter for the expected uncertainty of the estimation.</p>
+<p>The <code>max_sample_size</code> is a first pass of randomly sampling, before all possible positions are generated for the sequence-model-based optimization. It samples the search space directly and takes effect if the search-space is very large:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">search_data</span> <span class="o">=</span> <span class="p">{</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>  <span class="s2">"x1"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>  <span class="s2">"x2"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>  <span class="s2">"x3"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>  <span class="s2">"x4"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">}</span>
+</code></pre></div>
+<p>The <code>max_sample_size</code>-parameter is necessary to avoid a memory overload from generating all possible positions from the search-space. The search-space above corresponds to a list of <span class="arithmatex">\(100000^4 = 100000000000000000000\)</span> numpy arrays. This memory overload is expected for a sequence-model-based optimization algorithm, because the surrogate model has the job make a prediction for every position in the search-space to calculate the acquisition-function. The <code>max_sample_size</code>-parameter was introduced to provide a better out-of-the-box experience if using smb-optimizers.</p>
 <ul>
 <li><strong>type</strong>: int</li>
 <li><strong>default</strong>: 10000000</li>
