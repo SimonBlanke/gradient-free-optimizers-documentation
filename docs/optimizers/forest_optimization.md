@@ -4,17 +4,16 @@
 
 The forest-optimizer calculates the expected improvement of the position space with a 
 tree-based model. This optimization technique is very similar to bayesian-optimization
-in every part, except its model.
+in every part, except its surrogate model.
 
 
 
 ## About the implementation
 
-implementation_ = """
-The forest-optimizer shares most of its code base with the bayesian-optimizer. Only its model, to 
-calculate the expected score and its standard deviation is different. Tree based models do not 
+The forest-optimizer shares most of its code base with the bayesian-optimizer. Only its model to 
+calculate the expected score $\mu$ and its standard deviation $\sigma$ is different. Tree based models do not 
 calculate the standard deviation by them self. A modification is necessary to determine the
-standard deviation from the impurity of the trees in the ensemble.
+standard deviation from the impurity of the trees in the ensemble. This modification is taken from the paper *"Algorithm Runtime Prediction: Methods & Evaluation"* chapter *4.3.3*.
 
 
 
