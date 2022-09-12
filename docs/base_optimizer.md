@@ -16,6 +16,7 @@ Pass the search_space to the optimizer class to define the space were the optimi
 example:
 ```python
 ...
+
 search_space = {
     "x1": numpy.arange(-10, 31, 0.3),
     "x2": numpy.arange(-10, 31, 0.3),

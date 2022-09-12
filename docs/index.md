@@ -1,4 +1,6 @@
-# Introduction
+# Gradient-Free-Optimizers
+
+## Introduction
 
 Gradient-Free-Optimizers provides a collection of easy to use optimization techniques, whose objective function only requires an arbitrary score that gets maximized.
 
