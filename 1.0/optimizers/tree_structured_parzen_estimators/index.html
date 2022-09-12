@@ -347,17 +347,23 @@
 <h1 id="tree-structured-parzen-estimators">Tree Structured Parzen Estimators</h1>
 <h2 id="introduction">Introduction</h2>
 <p>Tree of Parzen Estimators chooses new positions by calculating an acquisition function. 
-It does so by calculating the ratio of probability being among the best positions and 
-the worst positions. Those probabilities are determined with a kernel density estimator,
-that is trained on alrady evaluated positions.</p>
+It assesses all possible positions by calculating the ratio of their probability being among the best positions and the worst positions. Those probabilities are determined with a kernel density estimator, which is trained on already evaluated positions.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
 <p>Similar to other sequence-model-based optimization algorithms the positions and scores 
 of previous evaluations are saved as features and targets to train a machine learning algorithm.
-For the tree structured parzen estimators we use two kernel density estimators that get
-the training data from the best and worst positions to calculate the acquisition function.</p>
+For the tree structured parzen estimators we use two separate kernel density estimators one receiving the best positions, while the other gets the worst positions to calculate the acquisition function. </p>
+<p>The separation of the position into best and worst is very simple. First we sort the positions by their scores. We split this list at the following index:</p>
+<div class="arithmatex">\[
+i_{split} = \max( n_{samples} \gamma, 1)
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\gamma\)</span> <strong>=&gt;</strong> <code>gamma_tpe</code></li>
+<li><span class="arithmatex">\(n_{samples}\)</span> <strong>=&gt;</strong> the number of positions in the list</li>
+</ul>
 <h2 id="parameters">Parameters</h2>
 <h3 id="gamma_tpe"><code>gamma_tpe</code></h3>
-<p>Separates the explored positions into good and bad.</p>
+<p>This parameter determines the separation of the explored positions into good and bad. It must be in the range between 0 and 1. A value of 0.2 means, that the best <span class="arithmatex">\(20\%\)</span> of the known positions are put into the list of best known positions, while the rest is put into the list of worst known positions.</p>
 <ul>
 <li><strong>type</strong>: float</li>
 <li><strong>default</strong>: 0.2</li>

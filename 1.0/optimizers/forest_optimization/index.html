@@ -358,13 +358,12 @@
 <h2 id="introduction">Introduction</h2>
 <p>The forest-optimizer calculates the expected improvement of the position space with a 
 tree-based model. This optimization technique is very similar to bayesian-optimization
-in every part, except its model.</p>
+in every part, except its surrogate model.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
-<p>implementation_ = """
-The forest-optimizer shares most of its code base with the bayesian-optimizer. Only its model, to 
-calculate the expected score and its standard deviation is different. Tree based models do not 
+<p>The forest-optimizer shares most of its code base with the bayesian-optimizer. Only its model to 
+calculate the expected score <span class="arithmatex">\(\mu\)</span> and its standard deviation <span class="arithmatex">\(\sigma\)</span> is different. Tree based models do not 
 calculate the standard deviation by them self. A modification is necessary to determine the
-standard deviation from the impurity of the trees in the ensemble.</p>
+standard deviation from the impurity of the trees in the ensemble. This modification is taken from the paper <em>"Algorithm Runtime Prediction: Methods &amp; Evaluation"</em> chapter <em>4.3.3</em>.</p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="xi"><code>xi</code></h3>
 <p>Parameter for the expected uncertainty of the estimation. It is a parameter that belongs to the expected-improvement acquisition-function.</p>
@@ -375,12 +374,11 @@ standard deviation from the impurity of the trees in the ensemble.</p>
 </ul>
 <hr/>
 <h3 id="tree_regressor"><code>tree_regressor</code></h3>
-<p>The access to the surrogate model class. Example surrogate
-model classes can be found in a separate repository.</p>
+<p>The <code>tree_regressor</code>-parameter determines the type of surrogate model the forest-optimization algorithm will use to calculate <span class="arithmatex">\(\mu\)</span> and <span class="arithmatex">\(\sigma\)</span>.</p>
 <ul>
 <li><strong>type</strong>: string</li>
 <li><strong>default</strong>: extra_tree</li>
-<li><strong>possible values</strong>: "extra_tree, random_forest, gradient_boost"</li>
+<li><strong>possible values</strong>: "extra_tree", "random_forest", "gradient_boost"</li>
 </ul>
 <hr/>
 <h3 id="max_sample_size"><code>max_sample_size</code></h3>
