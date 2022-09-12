@@ -19,15 +19,37 @@ in addition to the prediction (or mean), both of which are required to
 compute the acquisition function.
 The position of the best predicted score
 is evaluated next. The selected position and its true score is then collected, 
-restarting the cycle.
+restarting the cycle. The acquisition function used in this algorithm is the expected improvement.  The expected improvement is calculated by the following equation:
 
+$$
+\text{expected improvement} = ( \mu - y_{sample, max} - \xi ) \cdot \varphi(Z) + \sigma \cdot \Phi(Z)
+$$
+
+where:
+
+$$
+\mu, \sigma = \text{surrogate-model.predict}(...)
+$$
+
+and:
+
+- $y_{sample, max}$ **=>** best known score
+- $\xi$ **=>** xi-parameter
+- $\varphi$ **=>** Probability density function
+- $\Phi$ **=>** Cumulative distribution function
+
+The surrogate model used in bayesian optimization is the gassian process regressor. A crucial property of this model is, that it returns the uncertainty of the prediction $\sigma$ together with the predicted value $\mu$.
 
 
 ## Parameters
 
+{% include 'parameters/xi.md' %}
+
 {% include 'parameters/gpr.md' %}
 
-{% include 'parameters/xi.md' %}
+{% include 'parameters/max_sample_size.md' %}
+
+{% include 'parameters/sampling.md' %}
 
 {% include 'parameters/warm_start_smbo.md' %}
 
