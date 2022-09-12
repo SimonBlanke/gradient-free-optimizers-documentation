@@ -20,13 +20,14 @@ standard deviation from the impurity of the trees in the ensemble.
 
 ## Parameters
 
+{% include 'parameters/xi.md' %}
+
 {% include 'parameters/tree_regressor.md' %}
 
-{% include 'parameters/xi.md' %}
+{% include 'parameters/max_sample_size.md' %}
+
+{% include 'parameters/sampling.md' %}
 
 {% include 'parameters/warm_start_smbo.md' %}
 
 {% include 'parameters/rand_rest_p.md' %}
-
-
-
