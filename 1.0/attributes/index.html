@@ -309,64 +309,59 @@
 <h1 id="attributes">Attributes</h1>
 <h2 id="search_data"><code>search_data</code></h2>
 <ul>
-<li><strong>type:</strong> <code>dataframe</code></li>
+<li><strong>return type:</strong> <code>pandas dataframe</code></li>
 </ul>
 <p>Dataframe containing information about the score and the value of each parameter. Each row shows the information of one optimization iteration.</p>
 <p>example:</p>
-<table class="table">
-<thead class="table-head">
-<tr class="row">
-<td class="cell">score</td>
-<td class="cell">x1</td>
-<td class="cell">x2</td>
-<td class="cell">x...</td>
+<table>
+<thead>
+<tr>
+<th>x1</th>
+<th>x2</th>
+<th>score</th>
 </tr>
 </thead>
-<tbody class="table-body">
-<tr class="row">
-<td class="cell">0.756</td>
-<td class="cell">0.1</td>
-<td class="cell">0.2</td>
-<td class="cell">...</td>
+<tbody>
+<tr>
+<td>5</td>
+<td>15</td>
+<td>0.3</td>
 </tr>
-<tr class="row">
-<td class="cell">0.823</td>
-<td class="cell">0.3</td>
-<td class="cell">0.1</td>
-<td class="cell">...</td>
+<tr>
+<td>10</td>
+<td>12</td>
+<td>0.7</td>
 </tr>
-<tr class="row">
-<td class="cell">...</td>
-<td class="cell">...</td>
-<td class="cell">...</td>
-<td class="cell">...</td>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
 </tr>
-<tr class="row">
-<td class="cell">...</td>
-<td class="cell">...</td>
-<td class="cell">...</td>
-<td class="cell">...</td>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
 </tr>
 </tbody>
 </table>
 <h2 id="best_score"><code>best_score</code></h2>
 <ul>
-<li><strong>type:</strong> <code>float</code></li>
+<li><strong>return type:</strong> <code>float</code></li>
 </ul>
-<p>numerical value of the best score, that was found during the optimization run.</p>
+<p>Numerical value of the best score, that was found during the optimization run.</p>
 <h2 id="best_para"><code>best_para</code></h2>
 <ul>
-<li><strong>type:</strong> <code>dict</code></li>
+<li><strong>return type:</strong> <code>dict</code></li>
 </ul>
-<p>parameter dictionary of the best score, that was found during the optimization run.</p>
+<p>Parameter dictionary of the best score, that was found during the optimization run.</p>
 <h2 id="eval_times"><code>eval_times</code></h2>
 <ul>
-<li><strong>type:</strong> <code>list</code></li>
+<li><strong>return type:</strong> <code>list</code></li>
 </ul>
 <p>List of evaluation times (time of objective function evaluation) collected during the optimization run.</p>
 <h2 id="iter_times"><code>iter_times</code></h2>
 <ul>
-<li><strong>type:</strong> <code>list</code></li>
+<li><strong>return type:</strong> <code>list</code></li>
 </ul>
 <p>List of iteration times (evaluation + optimization) collected during the optimization run.</p>
 </article>
