@@ -71,7 +71,9 @@ nav:
       - Grid Search: optimizers/grid_search.md
       - Parallel Tempering: optimizers/parallel_tempering.md
       - Particle Swarm Optimization: optimizers/particle_swarm_optimization.md
+      - Spiral Optimization: optimizers/spiral_optimization.md
       - Evolution Strategy: optimizers/evolution_strategy.md
       - Bayesian Optimization: optimizers/bayesian_optimization.md
+      - Lipschitz Optimization: optimizers/lipschitz_optimization.md
       - Tree Structured Parzen Estimators: optimizers/tree_structured_parzen_estimators.md
       - Forest Optimization: optimizers/forest_optimization.md
