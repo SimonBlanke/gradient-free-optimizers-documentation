@@ -3,17 +3,25 @@
 
 ## Introduction
 
-The **spiral optimization**-algorithm 
+The **spiral optimization**-algorithm is a population-based algorithm, in which a number of particles move in a spiral-like pattern to explore the search space and converge to the best known position as the spiral decays.
 
 
 
 ## About the implementation
 
-
+The spiral optimization is very similar to the particle swarm optimization algorithm. Both algorithms are population based and imitate physics based movement by calculating n-dimensional vectors. The spiral optimization calculates the new position in the search space with the following equation:
 
 $$
-x_i (k+1) = x^* (k) R(\theta) (x_i(k)- x^*(k))
+x_i (k+1) = x^* (k) r(k) R(\theta) (x_i(k)- x^*(k))
 $$
+
+where:
+
+- k **=>** nth iteration
+- r **=>** `decay_rate`
+- R **=>** rotation matrix
+- $x_i$ **=>** current position
+- $x^*$ **=>** center position (known best position of all particles)
 
 
 
