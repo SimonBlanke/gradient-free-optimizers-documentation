@@ -380,7 +380,8 @@ v_{n+1} = \omega \cdot v_n + c_k \cdot r_1 \cdot (p_{best}-p_n) + c_s \cdot r_2 
 <p>Since the particle is always moving for the same single timeframe we can just add the velocity and the current position of the particle to get the new position.</p>
 <h2 id="parameters">Parameters</h2>
 <h3 id="population"><code>population</code></h3>
-<p>Size of the population for population-based optimization algorithms. A member of the population is called single optimizer, individual or particle depending on the type of algorithm. Each member of the population is a separate optimizer class with information about the positions and scores of the optimizer and all methods to perform the iteration and evaluation steps.</p>
+<p>Size of the population for population-based optimization algorithms. A member of the population is called <em>single optimizer</em>, <em>individual</em> or <em>particle</em> depending on the type of algorithm. Each member of the population is a separate optimizer class with information about the positions and scores of the optimizer and all methods to perform the iteration and evaluation steps.</p>
+<p>All population based optimizers in this package calculate the new positions one member at a time. So if the optimizer performs 10 iterations and has a population size of 10, then each member of the population would move once to a new position. </p>
 <ul>
 <li><strong>type</strong>: int</li>
 <li><strong>default</strong>: 10</li>

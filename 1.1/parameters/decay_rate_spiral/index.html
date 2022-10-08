@@ -260,12 +260,11 @@
 <article class="md-content__inner md-typeset">
 <h1>Decay rate spiral</h1>
 <h3 id="decay_rate"><code>decay_rate</code></h3>
-<p>The number of iterations the algorithm performs before switching 
-temperatures of the individual optimizers in the population.</p>
+<p>The <code>decay_rate</code> is called <span class="arithmatex">\(r(k)\)</span> in the spiral-optimization equation and is usually referred to as a step-size, but behaves more like a modification factor of the radius of the spiral movement of the particles in this implementation. This parameter of the spiral-optimization algorithm is a factor, that influences the radius of the particles during their spiral movement. Lower values accelerates the convergence of the particles to the best known position, while values above 1 eventually lead to a movement where the particles spiral away from each other. </p>
 <ul>
 <li><strong>type</strong>: float</li>
 <li><strong>default</strong>: 0.99</li>
-<li><strong>typical range</strong>: 0.9 ... 1.1</li>
+<li><strong>typical range</strong>: 0.85 ... 1.15</li>
 </ul>
 <hr/>
 </article>
