@@ -39,6 +39,7 @@ theme:
         name: Switch to light mode
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
 
 extra_css:
   - css/extra.css
@@ -61,7 +62,8 @@ extra:
       link: https://www.linkedin.com/in/simon-blanke/
 
 nav:
-  - Introduction: index.md
+  - Home:
+    - Gradient-Free-Optimizers: index.md
 
   - API Reference:
     - Base Optimizer: base_optimizer.md
