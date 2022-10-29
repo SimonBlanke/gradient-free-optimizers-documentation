@@ -1,4 +1,4 @@
-# Random Restart Hill ClimbingOptimizer
+# Random Restart Hill Climbing
 
 
 ## Introduction
