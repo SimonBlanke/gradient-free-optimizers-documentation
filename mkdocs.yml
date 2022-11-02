@@ -88,5 +88,6 @@ nav:
       - Evolution Strategy: optimizers/evolution_strategy.md
       - Bayesian Optimization: optimizers/bayesian_optimization.md
       - Lipschitz Optimization: optimizers/lipschitz_optimization.md
+      - DIRECT Algorithm: optimizers/direct_algorithm.md
       - Tree Structured Parzen Estimators: optimizers/tree_structured_parzen_estimators.md
       - Forest Optimization: optimizers/forest_optimization.md
