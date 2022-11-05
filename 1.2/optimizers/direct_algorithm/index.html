@@ -344,9 +344,19 @@
 <article class="md-content__inner md-typeset">
 <h1 id="direct-algorithm">DIRECT algorithm</h1>
 <h2 id="introduction">Introduction</h2>
-<p>...</p>
+<p>The DIRECT algorithm works by separating the search-space into smaller rectangle-shaped subspaces and evaluating their center positions. The algorithm decides which subspace to further separate by calculating an upper-bound within each subspace. The algorithm always splits the subspace-rectangles along the biggest edge. The upper-bound determines the highest potential improvement in each subspace. Therefore the DIRECT algorithm works similar to acquisition-function-based algorithms by predicting the score of new positions in the search-space based on known positions and scores.</p>
 <h2 id="about-the-implementation">About the implementation</h2>
-<p>...</p>
+<p>The DIRECT algorithm calculates the upper-bound based on the distance between the center position of the subspace and the furthest position:</p>
+<div class="arithmatex">\[
+U = score_{c} + k \cdot || x_c-x_{furthest} ||_2
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(score_{c}\)</span> <strong>=&gt;</strong> score of center position</li>
+<li><span class="arithmatex">\(k\)</span> <strong>=&gt;</strong> is the slope parameter (hard-coded to 1 in v1.2)</li>
+<li><span class="arithmatex">\(|| x_c-x_{furthest} ||_2\)</span> <strong>=&gt;</strong> distance between the center position of the subspace and the furthest position from the center</li>
+</ul>
+<p>Compared to other smbo the DIRECT algorithm does not need to do calculations based on all positions in the search-space but only a small subset. This makes this algorithm less computationally expensive, than bayesian- or lipschitz-optimization.</p>
 </article>
 </div>
 </div>
