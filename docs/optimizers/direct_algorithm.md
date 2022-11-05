@@ -1,4 +1,4 @@
-# DIRECT algorithm
+# DIRECT Algorithm
 
 
 ## Introduction
