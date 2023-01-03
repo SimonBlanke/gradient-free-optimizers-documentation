@@ -12,6 +12,10 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
+  - admonition
+  - pymdownx.details
+  - toc:
+      title: On this page
 
 plugins:
   - glightbox
@@ -19,27 +23,31 @@ plugins:
 
 theme:
   name: material
+
   icon:
     repo: fontawesome/brands/github-square
-  palette:
-    primary: indigo
-    accent: deep purple
 
-  palette: 
+  palette:
     # Palette toggle for light mode
     - scheme: default
+      primary: blue
+      accent: deep purple
       toggle:
         icon: material/brightness-5
         name: Switch to dark mode
 
     # Palette toggle for dark mode
     - scheme: slate
+      primary: blue
+      accent: deep purple
       toggle:
         icon: material/brightness-3
         name: Switch to light mode
+
   features:
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.indexes
 
 extra_css:
   - css/extra.css
@@ -49,28 +57,28 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-
 extra:
   version:
     provider: mike
   social:
-    - icon: fontawesome/brands/twitter 
+    - icon: fontawesome/brands/twitter
       link: https://twitter.com/blanke_simon
-    - icon: fontawesome/brands/github 
+    - icon: fontawesome/brands/github
       link: https://github.com/SimonBlanke/
-    - icon: fontawesome/brands/linkedin 
+    - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/simon-blanke/
 
 nav:
   - Home:
-    - Gradient-Free-Optimizers: index.md
+      - Gradient-Free-Optimizers: index.md
 
   - API Reference:
-    - Base Optimizer: base_optimizer.md
-    - Search: search.md
-    - Attributes: attributes.md
+      - Base Optimizer: base_optimizer.md
+      - Search: search.md
+      - Attributes: attributes.md
 
   - Optimization Algorithms:
+      - optimizers/index.md
       - Hill Climbing: optimizers/hill_climbing.md
       - Stochastic Hill Climbing: optimizers/stochastic_hill_climbing.md
       - Simulated Annealing: optimizers/simulated_annealing.md
