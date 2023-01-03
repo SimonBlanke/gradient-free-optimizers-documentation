@@ -8,6 +8,7 @@ Some random search implementations choose a new position within a large hypersph
 the current position. The implementation in hyperactive is purely random across the 
 search space in each step.
 
+{% include 'optimizers/examples/random_search.md' %}
 
 
 ## About the implementation

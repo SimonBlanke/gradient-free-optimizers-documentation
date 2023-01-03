@@ -6,6 +6,7 @@
 The **spiral optimization**-algorithm is a population-based algorithm, in which a number of particles move in a spiral-like pattern to explore the search space and converge to the best known position as the spiral decays.
 
 
+{% include 'optimizers/examples/spiral_optimization.md' %}
 
 ## About the implementation
 

@@ -6,6 +6,7 @@
 The **repulsing hill climbing** optimization algorithm inherits from the regular hill-climbing
 algorithm and adds a way to escape local optima by increasing the step-size once to jump away from its current region.
 
+{% include 'optimizers/examples/repulsing_hill_climbing.md' %}
 
 ## About the implementation
 

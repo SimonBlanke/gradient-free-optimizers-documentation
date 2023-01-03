@@ -8,6 +8,7 @@ which move according to their own inertia, the attraction to their own known bes
 and the global best position.
 
 
+{% include 'optimizers/examples/particle_swarm_optimization.md' %}
 
 ## About the implementation
 

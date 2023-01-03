@@ -10,6 +10,7 @@ accept worse solutions as a next position.
 This should enable the stochastic hill climbing to find better solutions in
 a non-convex optimization problem over many iterations.
 
+{% include 'optimizers/examples/stochastic_hill_climbing.md' %}
 
 ## About the implementation
 

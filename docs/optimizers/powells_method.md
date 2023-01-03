@@ -9,6 +9,7 @@ search space range for all dimensions except one to a single value. The hill cli
 algorithms searches the best position within this dimension. 
 
 
+{% include 'optimizers/examples/powells_method.md' %}
 
 
 ## About the implementation
