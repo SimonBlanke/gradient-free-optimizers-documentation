@@ -7,6 +7,8 @@ The grid search explores the search space by starting from a corner and progress
 per iteration. Increasing the `step_size` enables a more uniform exploration of the search space. 
 
 
+{% include 'optimizers/examples/grid_search.md' %}
+
 
 ## About the implementation
 

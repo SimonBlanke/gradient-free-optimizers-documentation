@@ -6,6 +6,9 @@
 Hill climbing is a very basic optimization technique, that explores the search space only localy. It starts at an initial point, which is often chosen randomly and continues to move to positions within its neighbourhood with a better solution. It has no method against getting stuck in local optima.
 
 
+{% include 'optimizers/examples/hill_climbing.md' %}
+
+
 
 ## About the implementation
 

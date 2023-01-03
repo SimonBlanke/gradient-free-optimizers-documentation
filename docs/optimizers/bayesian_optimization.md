@@ -7,6 +7,7 @@ Bayesian optimization chooses new positions by calculating the expected
 improvement of every position in the search space based on a gaussian process 
 that trains on already evaluated positions.
 
+{% include 'optimizers/examples/bayesian_optimization.md' %}
 
 
 ## About the implementation

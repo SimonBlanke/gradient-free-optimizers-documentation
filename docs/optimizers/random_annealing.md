@@ -5,6 +5,7 @@
 
 The **random annealing** algorithm is based on hill climbing and derived on the regular simulated annealing algorithm. It takes the idea of a temperatur and annealing to change the step-size over time.
 
+{% include 'optimizers/examples/random_annealing.md' %}
 
 
 ## About the implementation

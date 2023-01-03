@@ -7,6 +7,7 @@ tree-based model. This optimization technique is very similar to bayesian-optimi
 in every part, except its surrogate model.
 
 
+{% include 'optimizers/examples/forest_optimization.md' %}
 
 ## About the implementation
 

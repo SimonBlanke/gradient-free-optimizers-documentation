@@ -6,6 +6,7 @@
 The random restart hill climbing works by starting a hill climbing search and jumping to a random 
 new position after `n_iter_restart` iterations. Those restarts should prevent the algorithm getting stuck in local optima.
 
+{% include 'optimizers/examples/random_restart_hill_climbing.md' %}
 
 
 ## About the implementation

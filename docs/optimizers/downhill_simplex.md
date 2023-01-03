@@ -8,6 +8,7 @@ The simplex changes shape by reflecting, expanding, contracting or shrinking via
 the `alpha`, `gamma`, `beta` or `sigma` parameters.
 
 
+{% include 'optimizers/examples/downhill_simplex.md' %}
 
 ## About the implementation
 

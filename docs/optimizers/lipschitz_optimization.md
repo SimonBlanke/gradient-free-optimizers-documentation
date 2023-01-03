@@ -6,6 +6,7 @@
 The **lipschitz optimization** (often called lipo) is a global optimization algorithm that calculates an upper bound based on all previously explored positions in the search space. 
 
 
+{% include 'optimizers/examples/lipschitz_optimization.md' %}
 
 ## About the implementation
 

@@ -7,6 +7,7 @@ Simulated annealing chooses its next possible position similar to hill climbing,
 worse results with a probability that decreases with time. It simulates a temperature that decreases with each iteration, similar to a material cooling down.
 
 
+{% include 'optimizers/examples/simulated_annealing.md' %}
 
 ## About the implementation
 

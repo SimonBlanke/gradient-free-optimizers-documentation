@@ -1,5 +1,6 @@
 # Base Optimizer
 
+This page shows the parameters, methods and attributes that are available to any optimizer-class. You can go to the **Optimization Algorithms** section to get information about the specific parameters and explanations for each optimization algorithm.
 
 ## Parameters
 

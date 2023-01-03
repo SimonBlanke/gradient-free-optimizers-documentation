@@ -7,6 +7,7 @@ Tree of Parzen Estimators chooses new positions by calculating an acquisition fu
 It assesses all possible positions by calculating the ratio of their probability being among the best positions and the worst positions. Those probabilities are determined with a kernel density estimator, which is trained on already evaluated positions.
 
 
+{% include 'optimizers/examples/tree_structured_parzen_estimators.md' %}
 
 ## About the implementation
 

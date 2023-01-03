@@ -7,6 +7,7 @@ Evolution strategy mutates and combines the best individuals of a population acr
 number of generations without transforming them into an array of bits 
 (like genetic algorithms) but uses the real values of the positions.
 
+{% include 'optimizers/examples/evolution_strategy.md' %}
 
 
 ## About the implementation

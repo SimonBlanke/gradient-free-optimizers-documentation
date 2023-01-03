@@ -7,6 +7,7 @@ The pattern search works by initializing a cross-shaped collection of positions 
 search space. Those positions expplore the search-space by moving the collection of positions as a whole towards optima or shrinking the cross.
 
 
+{% include 'optimizers/examples/pattern_search.md' %}
 
 ## About the implementation
 

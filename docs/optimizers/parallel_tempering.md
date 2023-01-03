@@ -8,6 +8,7 @@ temperatures and chooses to swap those temperatures with a probability based on
 its temperature and difference of current scores.
 
 
+{% include 'optimizers/examples/parallel_tempering.md' %}
 
 ## About the implementation
 
