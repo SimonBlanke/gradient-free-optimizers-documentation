@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.3.1, mkdocs-material-8.3.9" name="generator"/>
-<title>Random Annealing - Gradient Free Optimizers</title>
+<title>Annealing rate random annealing - Gradient Free Optimizers</title>
 <link href="../../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -22,7 +22,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#random-annealing">
+<a class="md-skip" href="#annealing_rate">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Random Annealing
+              Annealing rate random annealing
             
           </span>
 </div>
@@ -91,7 +91,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../hill_climbing/">
+<a class="md-tabs__link" href="../../optimizers/hill_climbing/">
         Optimization Algorithms
       </a>
 </li>
@@ -173,8 +173,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_3">
           Optimization Algorithms
           <span class="md-nav__icon md-icon"></span>
@@ -186,144 +186,87 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../hill_climbing/">
+<a class="md-nav__link" href="../../optimizers/hill_climbing/">
         Hill Climbing
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../stochastic_hill_climbing/">
+<a class="md-nav__link" href="../../optimizers/stochastic_hill_climbing/">
         Stochastic Hill Climbing
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../simulated_annealing/">
+<a class="md-nav__link" href="../../optimizers/simulated_annealing/">
         Simulated Annealing
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../repulsing_hill_climbing/">
+<a class="md-nav__link" href="../../optimizers/repulsing_hill_climbing/">
         Repulsing Hill Climbing
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../downhill_simplex/">
+<a class="md-nav__link" href="../../optimizers/downhill_simplex/">
         Downhill Simplex Optimization
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../pattern_search/">
+<a class="md-nav__link" href="../../optimizers/pattern_search/">
         Pattern Search
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../powells_method/">
+<a class="md-nav__link" href="../../optimizers/powells_method/">
         Powell's Method
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../random_restart_hill_climbing/">
+<a class="md-nav__link" href="../../optimizers/random_restart_hill_climbing/">
         Random Restart Hill Climbing
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../random_search/">
+<a class="md-nav__link" href="../../optimizers/random_search/">
         Random Search
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Random Annealing
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../optimizers/random_annealing/">
         Random Annealing
       </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#introduction">
-    Introduction
-  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#about-the-implementation">
-    About the implementation
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#parameters">
-    Parameters
-  </a>
-<nav aria-label="Parameters" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#epsilon">
-    epsilon
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#distribution">
-    distribution
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#n_neighbours">
-    n_neighbours
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#start_temp">
-    start_temp
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#annealing_rate">
-    annealing_rate
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../grid_search/">
+<a class="md-nav__link" href="../../optimizers/grid_search/">
         Grid Search
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../parallel_tempering/">
+<a class="md-nav__link" href="../../optimizers/parallel_tempering/">
         Parallel Tempering
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../particle_swarm_optimization/">
+<a class="md-nav__link" href="../../optimizers/particle_swarm_optimization/">
         Particle Swarm Optimization
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../evolution_strategy/">
+<a class="md-nav__link" href="../../optimizers/evolution_strategy/">
         Evolution Strategy
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../bayesian_optimization/">
+<a class="md-nav__link" href="../../optimizers/bayesian_optimization/">
         Bayesian Optimization
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../tree_structured_parzen_estimators/">
+<a class="md-nav__link" href="../../optimizers/tree_structured_parzen_estimators/">
         Tree Structured Parzen Estimators
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../forest_optimization/">
+<a class="md-nav__link" href="../../optimizers/forest_optimization/">
         Forest Optimization
       </a>
 </li>
@@ -345,48 +288,9 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#introduction">
-    Introduction
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#about-the-implementation">
-    About the implementation
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#parameters">
-    Parameters
-  </a>
-<nav aria-label="Parameters" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#epsilon">
-    epsilon
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#distribution">
-    distribution
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#n_neighbours">
-    n_neighbours
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#start_temp">
-    start_temp
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#annealing_rate">
     annealing_rate
   </a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -395,52 +299,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="random-annealing">Random Annealing</h1>
-<h2 id="introduction">Introduction</h2>
-<p>The <strong>random annealing</strong> algorithm is based on hill climbing and derived on the regular simulated annealing algorithm. It takes the idea of a temperatur and annealing to change the step-size over time.</p>
-<h2 id="about-the-implementation">About the implementation</h2>
-<p>It also has a <code>start_temp</code> and an <code>annealing_rate</code> but uses them differently. The <code>start_temp</code> gets changed by the <code>annealing_rate</code> similarly to simulated annealing.</p>
-<div class="arithmatex">\[
-\text{start_temp} \leftarrow  \text{start_temp} * \text{annealing_rate}
-\]</div>
-<p>In the <strong>random annealing</strong> algorithm the <code>start_temp</code> acts as a factor that gets multiplied with <code>epsilon</code> to change the step-size of this algorithm over time. </p>
-<div class="arithmatex">\[
-\epsilon' = \epsilon * \text{start_temp}
-\]</div>
-<p>The idea is, that you want the algorithm to explore the search-space in the beginning of the optimization run and concentrate more on fine tuning the best results locally towards the end.</p>
-<h2 id="parameters">Parameters</h2>
-<h3 id="epsilon"><code>epsilon</code></h3>
-<p>The <em>step-size</em> of the hill climbing algorithm. Increasing <code>epsilon</code> also increases the average step-size, because its proportional to the standard-deviation of the distribution of the hill-climbing-based algorithm. If <code>epsilon</code> is too large the newly selected positions will be at the edge of the search space. If its value is very low it might not find new positions.</p>
-<ul>
-<li><strong>type</strong>: float</li>
-<li><strong>default</strong>: 0.03</li>
-<li><strong>typical range</strong>: 0.01 ... 0.3</li>
-</ul>
-<hr/>
-<h3 id="distribution"><code>distribution</code></h3>
-<p>The mathematical <code>distribution</code> the algorithm draws samples from. All available distributions are taken from the numpy-package.</p>
-<ul>
-<li><strong>type</strong>: string</li>
-<li><strong>default</strong>: "normal"</li>
-<li><strong>possible values</strong>: "normal", "laplace", "logistic", gumbel"</li>
-</ul>
-<hr/>
-<h3 id="n_neighbours"><code>n_neighbours</code></h3>
-<p>The number of positions the algorithm explores from its current postion before setting its current position to the best of those neighbour positions. If the value of <code>n_neighbours</code> is large the hill-climbing-based algorithm will take a lot of time to choose the next position to move to, but the choice will probably be a good one. It might be a prudent approach to increase <code>n_neighbours</code> of the search-space has a lot of dimensions, because there are more possible directions to move to.</p>
-<ul>
-<li><strong>type</strong>: int</li>
-<li><strong>default</strong>: 3</li>
-<li><strong>typical range</strong>: 1 ... 10</li>
-</ul>
-<hr/>
-<h3 id="start_temp"><code>start_temp</code></h3>
-<p>The start temperatur is set to the given value at the start of the optimization run and gets changed by the <code>annealing_rate</code> over time. This <code>start_temp</code> is multiplied with <code>epsilon</code> to change the step-size of this hill-climbing-based algorithm over time. </p>
-<ul>
-<li><strong>type</strong>: float</li>
-<li><strong>default</strong>: 10</li>
-<li><strong>typical range</strong>: 3 ... 25</li>
-</ul>
-<hr/>
+<h1>Annealing rate random annealing</h1>
 <h3 id="annealing_rate"><code>annealing_rate</code></h3>
 <p>Rate at which the temperatur-value of the algorithm decreases. An annealing rate above 1 increases the temperature over time.</p>
 <ul>
@@ -454,34 +313,6 @@
 </div>
 </main>
 <footer class="md-footer">
-<nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Random Search" class="md-footer__link md-footer__link--prev" href="../random_search/" rel="prev">
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
-</div>
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Previous
-              </span>
-              Random Search
-            </div>
-</div>
-</a>
-<a aria-label="Next: Grid Search" class="md-footer__link md-footer__link--next" href="../grid_search/" rel="next">
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                Next
-              </span>
-              Grid Search
-            </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
-</div>
-</a>
-</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
