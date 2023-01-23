@@ -36,5 +36,5 @@ The idea is, that you want the algorithm to explore the search-space in the begi
 
 {% include 'parameters/start_temp_random_annealing.md' %}
 
-{% include 'parameters/annealing_rate.md' %}
+{% include 'parameters/annealing_rate_random_annealing.md' %}
 
