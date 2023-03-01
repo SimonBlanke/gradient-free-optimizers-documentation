@@ -38,8 +38,6 @@ theme:
         icon: material/brightness-3
         name: Switch to light mode
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
 
 extra_css:
   - css/extra.css
