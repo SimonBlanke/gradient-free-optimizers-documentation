@@ -14,19 +14,19 @@ Pass the search_space to the optimizer class to define the space were the optimi
 
 
 
-example:
-```python
-...
+!!! example
+    ```python
+    ...
 
-search_space = {
-    "x1": numpy.arange(-10, 31, 0.3),
-    "x2": numpy.arange(-10, 31, 0.3),
-}
+    search_space = {
+        "x1": numpy.arange(-10, 31, 0.3),
+        "x2": numpy.arange(-10, 31, 0.3),
+    }
 
-opt = HillClimbingOptimizer(search_space)
+    opt = HillClimbingOptimizer(search_space)
 
-...
-```
+    ...
+    ```
 
 ---
 
