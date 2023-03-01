@@ -12,7 +12,11 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
-
+  - admonition
+  - pymdownx.details
+  - toc:
+      title: On this page
+      
 plugins:
   - glightbox
   - macros
@@ -38,8 +42,6 @@ theme:
         icon: material/brightness-3
         name: Switch to light mode
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
 
 extra_css:
   - css/extra.css
