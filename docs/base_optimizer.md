@@ -45,6 +45,38 @@ The initialization dictionary automatically determines a number of parameters th
 
 - `warm_start`: List of parameter dictionaries that marks additional start points for the optimization run.
   
+---
+
+### `constraints` 
+
+- **type:** `list`, `None`
+- **default:** `None`
+
+The constraints-argument accepts a list of functions. These functions contain the same argument as the objective-function to access the parameters from the search-space and returns a boolean value. With these parameters you can set new conditions and boundries for the search-space by returning `True` or `False` depending on the parameters from the argument. If the returning value is true the position in the search-space is valid, but if it is false the position is inside "constrained area" of the search-space.
+
+Optimization algorithms will never select a position inside the constrained area of the search-space to be evaluated inside the objective-function.
+
+
+!!! example
+    ```python
+    ...
+
+    search_space = {
+        "x1": numpy.arange(-10, 31, 0.3),
+        "x2": numpy.arange(-10, 31, 0.3),
+    }
+
+    def constraint_1(para):
+        # only values in 'x1' higher than -5 are valid
+        return para["x1"] > -5
+
+    constraints_list = [constraint_1]
+
+    opt = HillClimbingOptimizer(search_space, constraints=constraints_list)
+
+    ...
+    ```
+
 
 ---
 
