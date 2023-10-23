@@ -52,7 +52,7 @@ The initialization dictionary automatically determines a number of parameters th
 - **type:** `list`, `None`
 - **default:** `None`
 
-The constraints-argument accepts a list of functions. These functions contain the same argument as the objective-function to access the parameters from the search-space and returns a boolean value. With these parameters you can set new conditions and boundries for the search-space by returning `True` or `False` depending on the parameters from the argument. If the returning value is true the position in the search-space is valid, but if it is false the position is inside "constrained area" of the search-space.
+The constraints-argument accepts a list of functions. These functions contain the same argument as the objective-function to access the parameters from the search-space and returns a boolean value. With these parameters you can set new conditions and boundries for the search-space by returning `True` or `False` depending on the parameters from the argument. If the returning value is true the position in the search-space is valid, but if it is false the position is **not** inside the "valid area" of the search-space.
 
 Optimization algorithms will never select a position inside the constrained area of the search-space to be evaluated inside the objective-function.
 
