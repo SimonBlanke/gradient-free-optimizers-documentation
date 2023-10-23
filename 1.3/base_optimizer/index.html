@@ -405,7 +405,7 @@
 <li><strong>type:</strong> <code>list</code>, <code>None</code></li>
 <li><strong>default:</strong> <code>None</code></li>
 </ul>
-<p>The constraints-argument accepts a list of functions. These functions contain the same argument as the objective-function to access the parameters from the search-space and returns a boolean value. With these parameters you can set new conditions and boundries for the search-space by returning <code>True</code> or <code>False</code> depending on the parameters from the argument. If the returning value is true the position in the search-space is valid, but if it is false the position is inside "constrained area" of the search-space.</p>
+<p>The constraints-argument accepts a list of functions. These functions contain the same argument as the objective-function to access the parameters from the search-space and returns a boolean value. With these parameters you can set new conditions and boundries for the search-space by returning <code>True</code> or <code>False</code> depending on the parameters from the argument. If the returning value is true the position in the search-space is valid, but if it is false the position is <strong>not</strong> inside the "valid area" of the search-space.</p>
 <p>Optimization algorithms will never select a position inside the constrained area of the search-space to be evaluated inside the objective-function.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
