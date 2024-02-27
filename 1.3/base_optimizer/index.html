@@ -384,7 +384,7 @@
 <li><strong>type:</strong> <code>dict</code>, <code>None</code></li>
 <li><strong>default:</strong> <code>{"grid": 8, "vertices": 8, "random": 4, "warm_start": []}</code></li>
 </ul>
-<p>The initialization dictionary automatically determines a number of parameters that will be evaluated in the first n iterations (n is the sum of the values in initialize). The initialize keywords are the following:</p>
+<p>An optimization run is split into the initialization phase and iteration phase. The initialization dictionary automatically determines the number of initialization steps. It is the sum if all initialization parameters in the dictionary passed to <strong>initialize</strong>. These parameters are evaluated in the first n iterations. After the initialization phase the optimization run continues with the given algorithm (e.g. hill-climbing). The initialize keywords are the following:</p>
 <ul>
 <li>
 <p><code>grid</code>: Initializes positions in a grid like pattern. Positions that cannot be put into a grid are randomly positioned.</p>
