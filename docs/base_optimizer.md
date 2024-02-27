@@ -35,7 +35,7 @@ Pass the search_space to the optimizer class to define the space were the optimi
 - **type:** `dict`, `None`
 - **default:** `{"grid": 8, "vertices": 8, "random": 4, "warm_start": []}`
 
-The initialization dictionary automatically determines a number of parameters that will be evaluated in the first n iterations (n is the sum of the values in initialize). The initialize keywords are the following:
+An optimization run is split into the initialization phase and iteration phase. The initialization dictionary automatically determines the number of initialization steps. It is the sum if all initialization parameters in the dictionary passed to **initialize**. These parameters are evaluated in the first n iterations. After the initialization phase the optimization run continues with the given algorithm (e.g. hill-climbing). The initialize keywords are the following:
 
 - `grid`: Initializes positions in a grid like pattern. Positions that cannot be put into a grid are randomly positioned.
 
