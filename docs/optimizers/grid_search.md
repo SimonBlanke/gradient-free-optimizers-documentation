@@ -23,4 +23,6 @@ one 2-dimensional-plane at a time.
 
 {% include 'parameters/step_size.md' %}
 
+{% include 'parameters/direction.md' %}
+
 
