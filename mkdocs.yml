@@ -93,7 +93,7 @@ nav:
       - Spiral Optimization: optimizers/spiral_optimization.md
       - Genetic Algorithm: optimizers/genetic_algorithm.md
       - Evolution Strategy: optimizers/evolution_strategy.md
-      - Differential Evolution: optimizers/differential_evolution.md
+      - Differential Evolution: optimizers/differential_evolution/main_page.md
       - Bayesian Optimization: optimizers/bayesian_optimization.md
       - Lipschitz Optimization: optimizers/lipschitz_optimization.md
       - DIRECT Algorithm: optimizers/direct_algorithm.md

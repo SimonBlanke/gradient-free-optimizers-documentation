@@ -10,6 +10,11 @@ Differential evolution is an optimization technique that iteratively improves a 
 
 
 
+
 ## Parameters
 
 {% include 'parameters/population.md' %}
+
+{% include 'optimizers/differential_evolution/mutation_rate.md' %}
+
+{% include 'optimizers/differential_evolution/crossover_rate.md' %}
