@@ -16,7 +16,7 @@
     
     
       
-        <title>Downhill simplex - Gradient Free Optimizers</title>
+        <title>Mutation rate - Gradient Free Optimizers</title>
       
     
     
@@ -78,6 +78,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#mutation_rate" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Downhill simplex
+              Mutation rate
             
           </span>
         </div>
@@ -781,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../genetic_algorithm/main_page/" class="md-nav__link">
+      <a href="../main_page/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -969,6 +974,23 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mutation_rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      mutation_rate
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -982,18 +1004,23 @@
                   
 
 
-  <h1>Downhill simplex</h1>
+  <h1>Mutation rate</h1>
 
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">gradient_free_optimizers</span> <span class="kn">import</span> <span class="n">DownhillSimplexOptimizer</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="o">...</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">opt</span> <span class="o">=</span> <span class="n">DownhillSimplexOptimizer</span><span class="p">(</span><span class="n">search_space</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">opt</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">objective_function</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-</code></pre></div>
-</div>
+<h3 id="mutation_rate"><code>mutation_rate</code></h3>
+<p>The mutation rate is a parameter in genetic algorithms that specifies the probability of randomly altering the value of a gene in a chromosome. Mutation helps in maintaining genetic diversity within the population and prevents the algorithm from getting stuck in local optima.</p>
+<div class="arithmatex">\[
+x'_i = 
+\begin{cases} 
+x_i &amp; \text{if } \text{rand} &gt; p_m \\
+1 - x_i &amp; \text{if } \text{rand} \leq p_m
+\end{cases}
+\]</div>
+<ul>
+<li><strong>type</strong>: float</li>
+<li><strong>default</strong>: 0.5</li>
+<li><strong>typical range</strong>: 0.0 ... 1.0</li>
+</ul>
+<hr />
 
 
 
