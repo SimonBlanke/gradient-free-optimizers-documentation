@@ -13,3 +13,11 @@ A genetic algorithm mimics natural selection by evolving a population of candida
 ## Parameters
 
 {% include 'parameters/population.md' %}
+
+{% include 'optimizers/genetic_algorithm/mutation_rate.md' %}
+
+{% include 'optimizers/genetic_algorithm/crossover_rate.md' %}
+
+{% include 'optimizers/genetic_algorithm/n_parents.md' %}
+
+{% include 'optimizers/genetic_algorithm/offspring.md' %}
