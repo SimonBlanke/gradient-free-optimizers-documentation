@@ -41,7 +41,7 @@ def generate_markdown_files(name, docstring):
     lines = [line.strip() for line in lines]
 
     # Extract the title and description
-    title = lines[0].strip("**").strip()
+    # title = lines[0].strip("**").strip()
 
     try:
         param_index = lines.index("Parameters")
@@ -50,12 +50,12 @@ def generate_markdown_files(name, docstring):
             "The docstring does not contain a 'Parameters' section."
         )
 
-    description = "\n".join(lines[1:param_index]).strip()
+    description = "\n".join(lines[0:param_index]).strip()
 
     # Create the title markdown file
     title_file_path = os.path.join(dir_path, f"{name}.md")
     with open(title_file_path, "w") as title_file:
-        title_file.write(f"# {title}\n\n")
+        # title_file.write(f"# {title}\n\n")
         title_file.write(f"{description}\n")
     print(f"Generated: {title_file_path}")
 
@@ -103,26 +103,6 @@ def save_parameter_file(param_dir, param_lines):
 
 optimizers = [
     HillClimbingOptimizer,
-    StochasticHillClimbingOptimizer,
-    RepulsingHillClimbingOptimizer,
-    SimulatedAnnealingOptimizer,
-    DownhillSimplexOptimizer,
-    RandomSearchOptimizer,
-    PowellsMethod,
-    GridSearchOptimizer,
-    RandomRestartHillClimbingOptimizer,
-    RandomAnnealingOptimizer,
-    PatternSearch,
-    DirectAlgorithm,
-    ParallelTemperingOptimizer,
-    ParticleSwarmOptimizer,
-    SpiralOptimization,
-    GeneticAlgorithmOptimizer,
-    EvolutionStrategyOptimizer,
-    DifferentialEvolutionOptimizer,
-    LipschitzOptimizer,
-    BayesianOptimizer,
-    TreeStructuredParzenEstimators,
 ]
 
 for optimizer in optimizers:
