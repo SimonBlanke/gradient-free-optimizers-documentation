@@ -44,7 +44,28 @@ An optimization run is split into the initialization phase and iteration phase. 
 - `random`: Number of random initialized positions
 
 - `warm_start`: List of parameter dictionaries that marks additional start points for the optimization run.
-  
+
+!!! example
+    ```python
+    ...
+
+    search_space = {
+        "x": numpy.arange(-10, 11, 0.1),
+    }
+
+    init_para = {
+        "x": 5,
+    }
+
+    initialize = {"warm_start": [init_para], "grid": 4, "vertices": 4, "random": 2}
+
+    opt = HillClimbingOptimizer(search_space, initialize=initialize)
+    opt.search(objective_function, n_iter=50)
+    ...
+    ```
+
+
+
 ---
 
 ### `constraints` 
